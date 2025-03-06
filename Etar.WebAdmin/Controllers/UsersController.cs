@@ -6,11 +6,11 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Etar.WebAdmin.Controllers
 {
-    public class UserController : Controller
+    public class UsersController : Controller
     {
         private readonly IAdminServices _service;
 
-        public UserController(IAdminServices service)
+        public UsersController(IAdminServices service)
         {
             _service = service; 
         }
@@ -25,6 +25,13 @@ namespace Etar.WebAdmin.Controllers
         public IActionResult Register(ReqAddNewAdminDto admin)
         {
             return Json(_service.UserServices.addNewAdminService.Execute(admin));
+        }
+
+        public IActionResult Admins ()
+        {
+            var res = _service.UserServices.getAdminsService.Execute();
+
+            return View(res);
         }
     }
 }
