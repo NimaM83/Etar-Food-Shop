@@ -1,0 +1,29 @@
+﻿using Etar.Application.Interfaces.Context;
+using Etar.Application.Interfaces.Services.Admin;
+using Etar.Application.Services.Admins.User;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Etar.Application.Services.Admins
+{
+    public class AdminServices : IAdminServices
+    {
+        private readonly IDataBaseContext _context;
+        public AdminServices(IDataBaseContext context)
+        {
+            _context = context;
+        }
+
+        private IUserService _userServices;
+        public IUserService UserServices
+        {
+            get
+            {
+                return _userServices = _userServices ?? new UserService(_context);
+            }
+        }
+    }
+}
