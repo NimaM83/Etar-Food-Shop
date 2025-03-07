@@ -1,5 +1,6 @@
 ﻿using Etar.Application.Interfaces.Context;
 using Etar.Application.Services.Admins.User.Commands.AddNewAdmin;
+using Etar.Application.Services.Admins.User.Commands.RemoveAdmin;
 using Etar.Application.Services.Admins.User.Queries.GetAdmins;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,7 @@ namespace Etar.Application.Services.Admins.User
         //سرویس افزودن ادمین جدید
         IAddNewAdminService addNewAdminService { get; }
         IGetAdminsService getAdminsService { get; }
+        IRemoveAdminService removeAdminService { get; }
     }
 
     public class UserService :IUserService
@@ -40,6 +42,16 @@ namespace Etar.Application.Services.Admins.User
             get
             {
                 return _getAdmins = _getAdmins ?? new GetAdminsService(_context);
+            }
+        }
+
+        private IRemoveAdminService _removeAdmin;
+        public IRemoveAdminService removeAdminService
+        {
+            get
+            {
+
+                return _removeAdmin = _removeAdmin ?? new RemoveAdminService(_context);
             }
         }
     }

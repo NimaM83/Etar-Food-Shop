@@ -33,5 +33,10 @@ namespace Etar.WebAdmin.Controllers
 
             return View(res);
         }
+
+        public IActionResult  Remove (Guid Id)
+        {
+            return Json(_service.UserServices.removeAdminService.Execute(Id));
+        }
     }
 }

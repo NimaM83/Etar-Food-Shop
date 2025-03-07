@@ -92,9 +92,12 @@
                                             ویرایش / جزئیات
                                         </button>
 
-                                        <button class="btn btn-danger">
-                                            حذف
+                                        <button class="btn btn-danger" >
+                                            <a asp-action="Remove" asp-route-Id="@item.Id">
+                                                حذف
+                                            </a>
                                         </button>
+                                      
                                     </td>
                                 </tr>
                             }
