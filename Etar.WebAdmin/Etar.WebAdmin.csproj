@@ -7,14 +7,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\assets\img\icons\category.svg" />
     <Content Remove="wwwroot\assets\img\icons\Order.svg" />
   </ItemGroup>
 
   <ItemGroup>
+    <_ContentIncludedByDefault Remove="wwwroot\assets\img\icons\category.svg" />
     <_ContentIncludedByDefault Remove="wwwroot\assets\img\icons\Order.svg" />
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\assets\img\icons\category.svg" />
     <None Include="wwwroot\assets\img\icons\Order.svg" />
   </ItemGroup>
 
