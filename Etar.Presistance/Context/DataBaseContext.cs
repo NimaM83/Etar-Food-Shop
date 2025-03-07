@@ -1,5 +1,6 @@
 ﻿using Etar.Application.Interfaces.Context;
 using Etar.Domain.Entities.Addresses;
+using Etar.Domain.Entities.Foods;
 using Etar.Domain.Entities.Users;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -18,6 +19,8 @@ namespace Etar.Presistance.Context
         public DbSet<Client> users { get; set; }
         public DbSet<Admin> admins { get; set; }
         public DbSet<Address> addresses { get ; set; } 
+        public DbSet<Food> foods { get; set; }
+        public DbSet<FoodCategory> foodCategories { get; set; }
 
     }
 }

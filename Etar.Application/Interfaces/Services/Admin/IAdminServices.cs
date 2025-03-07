@@ -1,4 +1,5 @@
-﻿using Etar.Application.Services.Admins.User;
+﻿using Etar.Application.Services.Admins.Food;
+using Etar.Application.Services.Admins.User;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,5 +11,6 @@ namespace Etar.Application.Interfaces.Services.Admin
     public interface IAdminServices
     {
         IUserService UserServices { get; }
+        IFoodService FoodServices { get; }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Etar.Domain.Entities.Addresses;
+using Etar.Domain.Entities.Foods;
 using Etar.Domain.Entities.Users;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -14,6 +15,8 @@ namespace Etar.Application.Interfaces.Context
         DbSet<Client> users { get; set; }
         DbSet<Admin> admins { get; set; }
         DbSet<Address> addresses { get; set; }
+        DbSet<FoodCategory> foodCategories { get; set; }
+        DbSet<Food> foods { get; set; }
 
         int SaveChanges(bool acceptAllChangesOnSuccess);
         int SaveChanges();
