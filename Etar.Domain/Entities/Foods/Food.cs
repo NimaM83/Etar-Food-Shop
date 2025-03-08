@@ -17,7 +17,7 @@ namespace Etar.Domain.Entities.Foods
         public int Inventory { get; set; }
         public  double Price { get; set; }
 
-        public virtual FoodCategory Caategory { get; set; }
+        public virtual FoodCategory Category { get; set; }
         public Guid CatId { get; set; }
     
     }
