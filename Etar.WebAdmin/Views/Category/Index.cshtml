@@ -88,12 +88,14 @@
                                     </td>
 
                                     <td>
-                                        <button class="btn btn-primary">
-                                            ویرایش / جزئیات
+                                        <button class="btn btn-primary" >
+                                            <a asp-action="Edit" asp-route-id="@item.Id" style="color : white">
+                                                ویرایش
+                                            </a>
                                         </button>
 
                                         <button class="btn btn-danger">
-                                            <a >
+                                            <a asp-action="Remove" asp-route-Id="@item.Id" style="color : white">
                                                 حذف
                                             </a>
                                         </button>

@@ -1,6 +1,7 @@
 ﻿using Etar.Application.Interfaces.Services.Admin;
 using Etar.Application.Services.Admins.User.Commands.AddNewAdmin;
 using Etar.Domain.Entities;
+using Etar.Domain.Entities.Foods;
 using Etar.Domain.Entities.Users;
 using Microsoft.AspNetCore.Mvc;
 
@@ -36,6 +37,7 @@ namespace Etar.WebAdmin.Controllers
 
         public IActionResult  Remove (Guid Id)
         {
+           
             return Json(_service.UserServices.removeAdminService.Execute(Id));
         }
     }
