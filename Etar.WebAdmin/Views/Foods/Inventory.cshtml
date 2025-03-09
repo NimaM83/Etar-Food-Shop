@@ -1,8 +1,10 @@
-﻿@using Etar.Application.Services.Admins.Food.Queries.GetCategories
+﻿@using Etar.Application.Services.Admins.Food.Queries.GetFoods
 @using Etar.Domain.Entities
-@model Result<ResGetCategoriesDto>
+@using Etar.Domain.Entities.Foods
+@model Result<List<ResGetFoodsDto>>
 @{
     Layout = null;
+    List<FoodCategory> categories = ViewBag.Categories;
 }
 
 <html lang="zxx" class="theme-light">
@@ -25,7 +27,7 @@
     <link rel="stylesheet" href="~/assets/css/responsive.css">
     <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css">
 
-    <title>ایتار-لیست دسته بندی ها</title>
+    <title>ایتار-موجودی رستوران</title>
     <link rel="icon" type="image/png" href="~/assets/img/favicon.webp">
 </head>
 <body class="bg-bunk loaded">
@@ -56,7 +58,7 @@
         <img src="~/assets/img/breadcrumb/br-shape-2.webp" alt="Image" class="br-shape-two position-absolute sm-none moveHorizontal">
         <img src="~/assets/img/breadcrumb/br-shape-3.webp" alt="Image" class="br-shape-three position-absolute top-0 end-0 h-100">
         <div class="container text-center ps-xxl-4">
-            <h2 class="br-title text-white">لیست دسته بندی ها</h2>
+            <h2 class="br-title text-white">لیست غذا ها</h2>
             <ul class="br-menu list-unstyle">
                 <li class="fs-xxl-20">رستوران ایتار</li>
                 <li class="fs-xxl-20"><a asp-controller="Home" asp-action="Index">صفحه اصلی</a></li>
@@ -67,20 +69,67 @@
     <!-- Cart section start -->
     <div class="container style-two">
     <div class="cart-wrap ptb-130">
+        <div class="filter-recipe d-flex align-items-center justify-content-md-between">
+            <ul class="nav nav-tabs recipe-tablist list-unstyle border-0" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab_1" type="button" role="tab" aria-selected="false" tabindex="-1">
+                        <a asp-action="Inventory" style="color: white">
+                            همه دسته بندی ها
+                        </a>
+                    </button>
+                </li>
+
+                @foreach (var item in categories)
+                {
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab_1" type="button" role="tab" aria-selected="false" tabindex="-1">
+                            <a asp-action="Inventory" asp-route-catId="@item.Id" style="color: white">
+                                @item.Name
+                            </a>
+                        </button>
+                    </li>
+                }
+
+
+            </ul>
+        </div>
         @if (Model.IsSuccess)
         {
+                <div class="filter-recipe d-flex align-items-center justify-content-md-between">
+                    <ul>
+                        <li>
+                            <button class="btn btn-warning">
+                                <a asp-action="ResetById" style="color: white">
+                                    بازنشانی همه
+                                </a>
+                            </button>
+                        </li>
+                        <br />
+
+                        <li>
+                            <button class="btn btn-warning">
+                                <a asp-action="ResetByCategory" asp-route-categoryId="@Model.Data.First().catId" style="color: white">
+                                    بازنشانی این دسته بندی
+                                </a>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
             
                 <div class="cart-table px-xxl-3 mb-65">
                     <table class="table text-nowrap">
                         <thead>
                             <tr>
-                                <th scope="col" class="text-white f-secondary fs-xxl-18">نام کاربری</th>
+                                <th scope="col" class="text-white f-secondary fs-xxl-18">نام </th>
+                                <th scope="col" class="text-white f-secondary fs-xxl-18">دسته بندی</th>
+                                <th scope="col" class="text-white f-secondary fs-xxl-18">موجودی</th>
+                                <th scope="col" class="text-white f-secondary fs-xxl-18"></th>
                                 <th scope="col" class="text-white f-secondary fs-xxl-18"></th>
                             </tr>
                         </thead>
                         <tbody>
 
-                            @foreach (var item in Model.Data.Categories)
+                            @foreach (var item in Model.Data)
                             {
                                 <tr>
                                     <td>
@@ -90,19 +139,31 @@
                                     </td>
 
                                     <td>
-                                        <button class="btn btn-primary" >
-                                            <a asp-action="Edit" asp-route-id="@item.Id" style="color : white">
-                                                ویرایش
-                                            </a>
-                                        </button>
-
-                                        <button class="btn btn-danger">
-                                            <a asp-action="Remove" asp-route-Id="@item.Id" style="color : white">
-                                                حذف
-                                            </a>
-                                        </button>
-
+                                        <h6 class="fs-18 text-white fw-bold">
+                                            @item.Category
+                                        </h6>
                                     </td>
+
+                                    <td>
+                                        <div class="v-counter">
+                                            <a class="minusBtn" asp-action="UpdateInventory" asp-route-id="@item.Id" asp-route-editAmount="-1">
+                                                
+                                            </a>
+                                            <input type="text" size="25" value="@item.Inventory" asp-for="@item.Inventory" class="count">
+                                            <a class="plusBtn" asp-action="UpdateInventory" asp-route-id="@item.Id" asp-route-editAmount="+1">
+                                                
+                                            </a>
+                                        </div>
+                                    </td>
+
+                                    <td>
+                                        <button class="btn btn-danger">
+                                            <a asp-action="ResetById" asp-route-id="@item.Id" style="color: white">
+                                                بازنشانی
+                                            </a>
+                                        </button>
+                                    </td>
+
                                 </tr>
                             }
 
@@ -120,14 +181,7 @@
             </h3>
         }
 
-        <button class="btn style-one">
-            <a asp-action="Create" style="color: white">
-                افزودن دسته بندی
-            </a>
-        </button>
-
-            </div>
-
+        </div>
     </div>
     <!-- Cart section end -->
     <!-- Back to Top -->

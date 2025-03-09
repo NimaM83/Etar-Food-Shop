@@ -32,6 +32,7 @@ namespace Etar.Application.Services.Admins.Food.Queries.GetFoods
                             Category = item.Category.Name,
                             Price = item.Price,
                             Inventory = item.Inventory,
+                            catId = item.Category.Id
                         });
                     }
 
@@ -67,6 +68,7 @@ namespace Etar.Application.Services.Admins.Food.Queries.GetFoods
                         Category = item.Category.Name,
                         Price = item.Price,
                         Inventory = item.Inventory,
+                        catId = item.CatId
                     });
                 }
 

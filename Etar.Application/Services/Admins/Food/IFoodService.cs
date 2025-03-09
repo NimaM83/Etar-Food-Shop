@@ -3,8 +3,10 @@ using Etar.Application.Services.Admins.Food.Commands.AddCategory;
 using Etar.Application.Services.Admins.Food.Commands.AddFood;
 using Etar.Application.Services.Admins.Food.Commands.RemoveCategoory;
 using Etar.Application.Services.Admins.Food.Commands.RemoveFood;
+using Etar.Application.Services.Admins.Food.Commands.ResetInventory;
 using Etar.Application.Services.Admins.Food.Commands.UpdateCategory;
 using Etar.Application.Services.Admins.Food.Commands.UpdateFood;
+using Etar.Application.Services.Admins.Food.Commands.UpdateInvenroy;
 using Etar.Application.Services.Admins.Food.Queries.GetCategories;
 using Etar.Application.Services.Admins.Food.Queries.GetFoodDetail;
 using Etar.Application.Services.Admins.Food.Queries.GetFoods;
@@ -24,6 +26,9 @@ namespace Etar.Application.Services.Admins.Food
         IRemoveFoodService RemoveFoodService { get; }
         IGetFoodDetaisService GetFoodDetaisService { get; }
         IUpdateFoodService UpdateFoodService { get; }
+
+        IUpdateInventoryService UpdateInventoryService { get; }
+        IResetInventoryService ResetInventoryService { get; }
     }
 
     public class FoodService : IFoodService
@@ -112,6 +117,24 @@ namespace Etar.Application.Services.Admins.Food
             get
             {
                 return _updatefood = _updatefood ?? new UpdateFoodService(_context);
+            }
+        }
+
+        private IUpdateInventoryService _updateinventory;
+        public IUpdateInventoryService UpdateInventoryService
+        {
+            get
+            {
+                return _updateinventory = _updateinventory ?? new UpdateInventoryService(_context);
+            }
+        }
+
+        private IResetInventoryService _resetinventory;
+        public IResetInventoryService ResetInventoryService
+        {
+            get
+            {
+                return _resetinventory = _resetinventory ?? new ResetInventoryService(_context);
             }
         }
     }

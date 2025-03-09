@@ -61,11 +61,13 @@
             <h2 class="br-title text-white">لیست غذا ها</h2>
             <ul class="br-menu list-unstyle">
                 <li class="fs-xxl-20">رستوران ایتار</li>
+                <li class="fs-xxl-20"><a asp-controller="Home" asp-action="Index">صفحه اصلی</a></li>
             </ul>
         </div>
     </div>
 
     <!-- Cart section start -->
+    <div class="container style-two">
     <div class="cart-wrap ptb-130">
         <div class="filter-recipe d-flex align-items-center justify-content-md-between">
             <ul class="nav nav-tabs recipe-tablist list-unstyle border-0" role="tablist">
@@ -94,7 +96,7 @@
         @if (Model.IsSuccess)
         {
 
-            <div class="container style-two">
+            
                 <div class="cart-table px-xxl-3 mb-65">
                     <table class="table text-nowrap">
                         <thead>
@@ -144,7 +146,7 @@
                     </table>
                 </div>
 
-            </div>
+            
         }
 
         else
@@ -159,6 +161,7 @@
                 افزودن غذا
             </a>
         </button>
+        </div>
 
     </div>
     <!-- Cart section end -->

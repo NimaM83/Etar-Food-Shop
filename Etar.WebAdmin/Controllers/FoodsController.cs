@@ -2,6 +2,7 @@
 using Etar.Application.Services.Admins.Food.Commands.AddFood;
 using Etar.Application.Services.Admins.Food.Commands.UpdateFood;
 using Etar.Application.Services.Admins.Food.Queries.GetFoods;
+using Etar.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Etar.WebAdmin.Controllers
@@ -65,6 +66,34 @@ namespace Etar.WebAdmin.Controllers
         public IActionResult Update(ReqUpdateFoodDto request)
         {
             return Json(_service.FoodServices.UpdateFoodService.Execute(request));
+        }
+
+        public IActionResult Inventory (Guid? catId)
+        {
+            ViewBag.Categories = _service.FoodServices.GetCategoriesService.Execute(null).Data.Categories;
+            return View(_service.FoodServices.GetFoodsService.Execute(catId));
+        }
+
+        public IActionResult UpdateInventory(Guid id, int editAmount)
+        {
+            Result result = _service.FoodServices.UpdateInventoryService.Execute(id, editAmount);
+
+            if(!result.IsSuccess)
+            {
+                return Json(result);
+            }
+
+            return RedirectToAction("Inventory");
+        }
+
+        public IActionResult ResetById(Guid? id)
+        {
+            return Json(_service.FoodServices.ResetInventoryService.Execute(id));
+        }
+
+        public IActionResult ResetByCategory(Guid categoryId)
+        {
+            return Json(_service.FoodServices.ResetInventoryService.Execute(categoryId));
         }
 
 
