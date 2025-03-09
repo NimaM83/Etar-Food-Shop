@@ -30,5 +30,10 @@ namespace Etar.WebAdmin.Controllers
             return Json(_service.FoodServices.AddFoodService.Execute(newFood));
         }
 
+        public IActionResult Remove(Guid id)
+        {
+            return Json(_service.FoodServices.RemoveFoodService.Execute(id));
+        }
+
     }
 }

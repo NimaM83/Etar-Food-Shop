@@ -2,8 +2,11 @@
 using Etar.Application.Services.Admins.Food.Commands.AddCategory;
 using Etar.Application.Services.Admins.Food.Commands.AddFood;
 using Etar.Application.Services.Admins.Food.Commands.RemoveCategoory;
+using Etar.Application.Services.Admins.Food.Commands.RemoveFood;
 using Etar.Application.Services.Admins.Food.Commands.UpdateCategory;
+using Etar.Application.Services.Admins.Food.Commands.UpdateFood;
 using Etar.Application.Services.Admins.Food.Queries.GetCategories;
+using Etar.Application.Services.Admins.Food.Queries.GetFoodDetail;
 using Etar.Application.Services.Admins.Food.Queries.GetFoods;
 
 
@@ -18,6 +21,9 @@ namespace Etar.Application.Services.Admins.Food
 
         IGetFoodsService GetFoodsService { get; }
         IAddFoodService AddFoodService { get; }
+        IRemoveFoodService RemoveFoodService { get; }
+        IGetFoodDetaisService GetFoodDetaisService { get; }
+        IUpdateFoodService UpdateFoodService { get; }
     }
 
     public class FoodService : IFoodService
@@ -79,6 +85,33 @@ namespace Etar.Application.Services.Admins.Food
             get
             {
                 return _addFood = _addFood ?? new AddFoodService(_context);
+            }
+        }
+
+        private IRemoveFoodService _removeFood;
+        public IRemoveFoodService RemoveFoodService
+        {
+            get
+            {
+                return _removeFood = _removeFood ?? new RemoveFoodService(_context);
+            }
+        }
+
+        private IGetFoodDetaisService _getfoodDetais;
+        public IGetFoodDetaisService GetFoodDetaisService
+        {
+            get
+            {
+                return _getfoodDetais = _getfoodDetais ?? new GetFoodDetailsService(_context);
+            }
+        }
+
+        private IUpdateFoodService _updatefood;
+        public IUpdateFoodService UpdateFoodService
+        {
+            get
+            {
+                return _updatefood = _updatefood ?? new UpdateFoodService(_context);
             }
         }
     }
