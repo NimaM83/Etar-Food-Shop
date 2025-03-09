@@ -1,5 +1,7 @@
 ﻿using Etar.Application.Interfaces.Services.Admin;
 using Etar.Application.Services.Admins.Food.Commands.AddFood;
+using Etar.Application.Services.Admins.Food.Commands.UpdateFood;
+using Etar.Application.Services.Admins.Food.Queries.GetFoods;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Etar.WebAdmin.Controllers
@@ -12,9 +14,10 @@ namespace Etar.WebAdmin.Controllers
             _service = adminServices;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(Guid? catId)
         {
-            return View(_service.FoodServices.GetFoodsService.Execute());
+            ViewBag.Categories = _service.FoodServices.GetCategoriesService.Execute(null).Data.Categories;
+            return View(_service.FoodServices.GetFoodsService.Execute(catId));
         }
 
         [HttpGet]
@@ -34,6 +37,37 @@ namespace Etar.WebAdmin.Controllers
         {
             return Json(_service.FoodServices.RemoveFoodService.Execute(id));
         }
+
+        public IActionResult Details(Guid id)
+        {
+            return View(_service.FoodServices.GetFoodDetaisService.Execute(id));
+        }
+
+        [HttpGet]
+        public IActionResult Update (Guid id)
+        {
+            ViewBag.Categories = _service.FoodServices.GetCategoriesService.Execute(null).Data.Categories;
+
+            ResGetFoodDto retrivedFood = _service.FoodServices.GetFoodsService.Execute(id).Data;
+            ReqUpdateFoodDto sendFood = new ReqUpdateFoodDto()
+            {
+                Name = retrivedFood.Name,
+                Id = retrivedFood.Id,
+                CategoryId = retrivedFood.CategoryId,
+                Description = retrivedFood.Description,
+                Price = retrivedFood.Price,
+            };
+
+            return View(sendFood);
+        }
+
+        [HttpPost]
+        public IActionResult Update(ReqUpdateFoodDto request)
+        {
+            return Json(_service.FoodServices.UpdateFoodService.Execute(request));
+        }
+
+
 
     }
 }

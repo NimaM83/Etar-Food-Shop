@@ -9,6 +9,7 @@ namespace Etar.Application.Services.Admins.Food.Queries.GetFoods
 {
     public interface IGetFoodsService
     {
-        Result<List<ResGetFoodsDto>> Execute();
+        Result<List<ResGetFoodsDto>> Execute(Guid? catId);
+        Result<ResGetFoodDto> Execute(Guid id);
     }
 }

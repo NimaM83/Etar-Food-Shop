@@ -1,0 +1,110 @@
+﻿
+@using Etar.Application.Services.Admins.Food.Commands.UpdateFood
+@using Etar.Domain.Entities.Foods
+@model ReqUpdateFoodDto
+@{
+    List<FoodCategory> categories = ViewBag.Categories;
+}
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Link of CSS files -->
+    <link rel="stylesheet" href="~/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/assets/css/swiper.bundle.min.css">
+    <link rel="stylesheet" href="~/assets/css/scrollcue.min.css">
+    <link rel="stylesheet" href="~/assets/css/remixicon.css">
+    <link rel="stylesheet" href="~/assets/css/header.css">
+    <link rel="stylesheet" href="~/assets/css/style.css">
+    <link rel="stylesheet" href="~/assets/css/footer.css">
+    <link rel="stylesheet" href="~/assets/css/responsive.css">
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css">
+
+    <title>ایتار-ویرایش غذا</title>
+    <link rel="icon" type="image/png" href="~/assets/img/favicon.webp">
+</head>
+
+<body class="bg-bunk loaded">
+
+    <!--  Preloader Start -->
+    <div class="loader-wrapper">
+        <div class="loader"></div>
+        <div class="loader-section section-left"></div>
+        <div class="loader-section section-right"></div>
+    </div>
+    <!--  Preloader End -->
+    <!-- Breadcrumb Section Start -->
+    <div class="breadcrumb-wrap bg-mild position-relative">
+        <img src="~/assets/img/breadcrumb/br-shape-1.webp" alt="Image" class="br-shape-one position-absolute sm-none bounce">
+        <img src="~/assets/img/breadcrumb/br-shape-2.webp" alt="Image" class="br-shape-two position-absolute sm-none moveHorizontal">
+        <img src="~/assets/img/breadcrumb/br-shape-3.webp" alt="Image" class="br-shape-three position-absolute top-0 end-0 h-100">
+        <div class="container text-center ps-xxl-4">
+            <h2 class="br-title text-white">ویرایش غذا</h2>
+            <ul class="br-menu list-unstyle">
+                <li class="fs-xxl-20">رستوران ایتار</li>
+            </ul>
+        </div>
+    </div>
+    <!-- Breadcrumb Section End -->
+    <!-- Checkout section start -->
+    <div class="container style-two ptb-130">
+        <div class="checkout-wrap">
+
+            <form method="post" class="checkout-form">
+                <h3 class="checkout-box-title fs-26 text-white fw-medium">فرم ویرایش غذا</h3>
+                <div class="row">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="form-group">
+                            <label class="fw-bold text-white d-block mb-10">نام</label>
+                            <input type="text" asp-for="@Model.Name" class="bg-mild text-white h-49 w-100 border-0" required="نام الزامیست">
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="form-group">
+                            <label class="fw-bold text-white d-block mb-10">قیمت</label>
+                            <input type="number" asp-for="@Model.Price" class="bg-mild text-white h-49 w-100 border-0" required="">
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="form-group">
+                            <label class="fw-bold text-white d-block mb-10">دسته بندی</label>
+                            <select asp-for="@Model.CategoryId" class="bg-mild text-white h-49 w-100 border-0">
+                                @foreach (var item in categories)
+                                {
+                                    <option value="@item.Id">@item.Name</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="fw-bold text-white d-block mb-10">توضیحات </label>
+                        <textarea asp-for="@Model.Description" cols="30" rows="20" placeholder="توضیحات ..." class="bg-mild text-white h-49 w-100 border-0"></textarea>
+                    </div>
+                </div>
+
+                <button class="btn style-one" type="submit">
+                    ویرایش
+                </button>
+            </form>
+
+        </div>
+    </div>
+    <!-- Checkout section end -->
+    <!-- Back to Top -->
+    <button type="button" id="backtotop" class="position-fixed text-center border-0 p-0" style="opacity: 1;">
+        <i class="ri-arrow-up-line"></i>
+    </button>
+
+    <!-- Link of JS files -->
+    <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script src="~/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="~/assets/js/swiper.bundle.min.js"></script>
+    <script src="~/assets/js/fslightbox.js"></script>
+    <script src="~/assets/js/scrollcue.min.js"></script>
+    <script src="~/assets/js/main.js"></script>
+
+
+
+</body>
