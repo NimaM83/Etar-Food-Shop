@@ -49,7 +49,7 @@ namespace Etar.Presistance.Migrations
 
                     b.HasIndex("ClientId");
 
-                    b.ToTable("addresses");
+                    b.ToTable("addresses", (string)null);
                 });
 
             modelBuilder.Entity("Etar.Domain.Entities.Foods.Food", b =>
@@ -88,7 +88,7 @@ namespace Etar.Presistance.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.ToTable("foods");
+                    b.ToTable("foods", (string)null);
                 });
 
             modelBuilder.Entity("Etar.Domain.Entities.Foods.FoodCategory", b =>
@@ -103,7 +103,7 @@ namespace Etar.Presistance.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("foodCategories");
+                    b.ToTable("foodCategories", (string)null);
                 });
 
             modelBuilder.Entity("Etar.Domain.Entities.Users.Admin", b =>
@@ -128,7 +128,7 @@ namespace Etar.Presistance.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("admins");
+                    b.ToTable("admins", (string)null);
                 });
 
             modelBuilder.Entity("Etar.Domain.Entities.Users.Client", b =>
@@ -161,7 +161,7 @@ namespace Etar.Presistance.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("users");
+                    b.ToTable("users", (string)null);
                 });
 
             modelBuilder.Entity("Etar.Domain.Entities.Addresses.Address", b =>

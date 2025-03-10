@@ -1,6 +1,7 @@
 ﻿using Etar.Application.Interfaces.Context;
 using Etar.Application.Interfaces.Services.Admin;
 using Etar.Application.Services.Admins.Food;
+using Etar.Application.Services.Admins.Table;
 using Etar.Application.Services.Admins.User;
 using System;
 using System.Collections.Generic;
@@ -33,6 +34,15 @@ namespace Etar.Application.Services.Admins
             get
             {
                 return _foodService = _foodService ?? new FoodService(_context);    
+            }
+        }
+
+        private ITableService _tableService;
+        public ITableService TableServices
+        {
+            get
+            {
+                return _tableService = _tableService?? new TableService(_context);
             }
         }
     }
