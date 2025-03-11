@@ -1,6 +1,7 @@
 ﻿using Etar.Application.Interfaces.Context;
 using Etar.Application.Services.Admins.Table.Commands.AddTable;
 using Etar.Application.Services.Admins.Table.Commands.RemoveTable;
+using Etar.Application.Services.Admins.Table.Commands.UpdateTable;
 using Etar.Application.Services.Admins.Table.Queries.GetTables;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,7 @@ namespace Etar.Application.Services.Admins.Table
         IAddTableService AddTableService { get; }
         IGetTablesService GetTablesService { get; }
         IRemoveTableService RemoveTableService { get; }
+        IUpdateTableService UpdateTableService { get; }
     }
 
     public class TableService : ITableService
@@ -50,6 +52,15 @@ namespace Etar.Application.Services.Admins.Table
             get
             {
                 return _removeTable = _removeTable ?? new RemoveTableService(_context);
+            }
+        }
+
+        private IUpdateTableService _updateTable;
+        public IUpdateTableService  UpdateTableService
+        {
+            get
+            {
+                return _updateTable = _updateTable ?? new UpdateTableSrvice(_context);
             }
         }
     }
