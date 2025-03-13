@@ -19,13 +19,26 @@ namespace Etar.Application.Services.Admins.Table.Queries.GetTables
             if(foundedTables.Count() > 0)
             {
                 List<ResGetTablesDto> tables = new List<ResGetTablesDto> ();
+                DateTime temp;
+
                 foreach(var item in foundedTables)
                 {
+                    if (item.ReservedTime != null &&
+                       !(DateTime.Now <= item.ReservedTime))
+                        {
+                            item.ReservedTime = null;
+                            item.IsReserved = false;
+                            _context.SaveChanges();
+                        }
+
+                    temp = item.ReservedTime != null ? item.ReservedTime.Value: new DateTime(10);
+
                     tables.Add(new ResGetTablesDto()
                     {
                         Id = item.Id,
                         Number = item.Number,
                         Capacity = item.Capacity,
+                        ReservedTime = (temp == new DateTime(10)) ? "بدون رزرو" : temp.ToShortTimeString()
                     });
                 }
 

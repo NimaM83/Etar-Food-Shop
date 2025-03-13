@@ -1,0 +1,145 @@
+﻿@using Etar.Application.Services.Admins.Table.Queries.GetTables
+@using Etar.Domain.Entities
+@model Result<List<ResGetTablesDto>>
+@{
+    Layout = null;
+}
+
+<html lang="zxx" class="theme-light">
+<!-- Mirrored from templates.hibotheme.com/etar/default/cart.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 21 Mar 2024 22:14:01 GMT -->
+<head>
+
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Link of CSS files -->
+    <link rel="stylesheet" href="~/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/assets/css/swiper.bundle.min.css">
+    <link rel="stylesheet" href="~/assets/css/scrollcue.min.css">
+    <link rel="stylesheet" href="~/assets/css/remixicon.css">
+    <link rel="stylesheet" href="~/assets/css/header.css">
+    <link rel="stylesheet" href="~/assets/css/style.css">
+    <link rel="stylesheet" href="~/assets/css/footer.css">
+    <link rel="stylesheet" href="~/assets/css/responsive.css">
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css">
+
+    <title>ایتار-لیست میز ها</title>
+    <link rel="icon" type="image/png" href="~/assets/img/favicon.webp">
+</head>
+<body class="bg-bunk loaded">
+
+    <!--  Preloader Start -->
+    <div class="loader-wrapper">
+        <div class="loader"></div>
+        <div class="loader-section section-left"></div>
+        <div class="loader-section section-right"></div>
+    </div>
+    <!--  Preloader End -->
+
+
+    <div class="breadcrumb-wrap bg-mild position-relative">
+        <img src="~/assets/img/breadcrumb/br-shape-1.webp" alt="Image" class="br-shape-one position-absolute sm-none bounce">
+        <img src="~/assets/img/breadcrumb/br-shape-2.webp" alt="Image" class="br-shape-two position-absolute sm-none moveHorizontal">
+        <img src="~/assets/img/breadcrumb/br-shape-3.webp" alt="Image" class="br-shape-three position-absolute top-0 end-0 h-100">
+        <div class="container text-center ps-xxl-4">
+            <h2 class="br-title text-white">لیست میز ها</h2>
+            <ul class="br-menu list-unstyle">
+                <li class="fs-xxl-20">رستوران ایتار</li>
+                <li class="fs-xxl-20"><a asp-controller="Home" asp-action="Index">صفحه اصلی</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Cart section start -->
+    <div class="container style-two">
+        <div class="cart-wrap ptb-130">
+            @if (Model.IsSuccess)
+            {
+
+                <div class="cart-table px-xxl-3 mb-65">
+                    <table class="table text-nowrap">
+                        <thead>
+                            <tr>
+                                <th scope="col" class="text-white f-secondary fs-xxl-18">شماره میز</th>
+                                <th scope="col" class="text-white f-secondary fs-xxl-18">ظرفیت</th>
+                                <th scope="col" class="text-white f-secondary fs-xxl-18">زمان رزرو</th>
+                                <th scope="col" class="text-white f-secondary fs-xxl-18"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @foreach (var item in Model.Data)
+                            {
+                                <tr>
+                                    <td>
+                                        <h6 class="fs-18 text-white fw-bold">
+                                            @item.Number
+                                        </h6>
+                                    </td>
+
+                                    <td>
+                                        <h6 class="fs-18 text-white fw-bold">
+                                            @item.Capacity
+                                        </h6>
+                                    </td>
+
+                                    <td>
+                                        <h6 class="fs-18 text-white fw-bold">
+                                            @item.ReservedTime
+                                        </h6>
+                                    </td>
+
+                                    <td>
+                                        <button class="btn btn-primary">
+                                            <a asp-action="Reserve" asp-route-id="@item.Id" style="color : white">
+                                                رزرو
+                                            </a>
+                                        </button>
+
+                                    </td>
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+
+
+            }
+
+            else
+            {
+                <h3 class="text text-danger">
+                    @Model.Message
+                </h3>
+            }
+
+            <button class="btn style-one">
+                <a asp-action="Create" style="color: white">
+                    افزودن میز
+                </a>
+            </button>
+
+        </div>
+
+    </div>
+    <!-- Cart section end -->
+    <!-- Back to Top -->
+    <button type="button" id="backtotop" class="position-fixed text-center border-0 p-0">
+        <i class="ri-arrow-up-line"></i>
+    </button>
+
+    <!-- Link of JS files -->
+    <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script src="~/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="~/assets/js/swiper.bundle.min.js"></script>
+    <script src="~/assets/js/fslightbox.js"></script>
+    <script src="~/assets/js/scrollcue.min.js"></script>
+    <script src="~/assets/js/main.js"></script>
+
+
+
+</body><!-- Mirrored from templates.hibotheme.com/etar/default/cart.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 21 Mar 2024 22:14:03 GMT -->
+</html>

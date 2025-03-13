@@ -14,7 +14,8 @@ namespace Etar.Application.Services.Admins.Table.Commands.AddTable
 
         public Result Execute(ReqAddTableDto request)
         {
-            bool isValid = _context.tables.Where(t => t.Number == request.Number) == null? true:false;
+            bool isValid = _context.tables.Where(t => t.Number == request.Number)
+                           .ToList().Count() == 0? true:false;
 
             if(isValid)
             {
