@@ -1,7 +1,9 @@
 ﻿using Etar.Application.Interfaces.Context;
 using Etar.Application.Services.Admins.Table.Commands.AddTable;
 using Etar.Application.Services.Admins.Table.Commands.RemoveTable;
+using Etar.Application.Services.Admins.Table.Commands.ReservationTable;
 using Etar.Application.Services.Admins.Table.Commands.UpdateTable;
+using Etar.Application.Services.Admins.Table.Queries.GetTableDatails;
 using Etar.Application.Services.Admins.Table.Queries.GetTables;
 using System;
 using System.Collections.Generic;
@@ -17,6 +19,8 @@ namespace Etar.Application.Services.Admins.Table
         IGetTablesService GetTablesService { get; }
         IRemoveTableService RemoveTableService { get; }
         IUpdateTableService UpdateTableService { get; }
+        IGetTableDetailsService GetTableDetailsService { get; }
+        IReservationTableService ReservationTableService { get; }
     }
 
     public class TableService : ITableService
@@ -61,6 +65,24 @@ namespace Etar.Application.Services.Admins.Table
             get
             {
                 return _updateTable = _updateTable ?? new UpdateTableSrvice(_context);
+            }
+        }
+
+        private IGetTableDetailsService _getTableDetails;
+        public IGetTableDetailsService GetTableDetailsService
+        {
+            get
+            {
+                return _getTableDetails = _getTableDetails ?? new GetTableDetailsService(_context);
+            }
+        }
+
+        private IReservationTableService _reservationTable;
+        public IReservationTableService ReservationTableService
+        {
+            get
+            {
+                return _reservationTable = _reservationTable ?? new ReservationTableService(_context);
             }
         }
     }

@@ -1,5 +1,6 @@
 ﻿using Etar.Application.Interfaces.Context;
 using Etar.Domain.Entities.Addresses;
+using Etar.Domain.Entities.Carts;
 using Etar.Domain.Entities.Foods;
 using Etar.Domain.Entities.Table;
 using Etar.Domain.Entities.Users;
@@ -23,6 +24,8 @@ namespace Etar.Presistance.Context
         public DbSet<Food> foods { get; set; }
         public DbSet<FoodCategory> foodCategories { get; set; }
         public DbSet<Table> tables { get; set; }
+        public DbSet<AdminCart> adminCarts { get; set; }
+        public DbSet<AdminCartItem> adminCartItems { get; set; }
 
     }
 }

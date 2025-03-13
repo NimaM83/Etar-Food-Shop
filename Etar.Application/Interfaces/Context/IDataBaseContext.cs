@@ -1,4 +1,5 @@
 ﻿using Etar.Domain.Entities.Addresses;
+using Etar.Domain.Entities.Carts;
 using Etar.Domain.Entities.Foods;
 using Etar.Domain.Entities.Table;
 using Etar.Domain.Entities.Users;
@@ -19,6 +20,8 @@ namespace Etar.Application.Interfaces.Context
         DbSet<FoodCategory> foodCategories { get; set; }
         DbSet<Food> foods { get; set; }
         DbSet<Table> tables { get; set; }
+        DbSet<AdminCart> adminCarts { get; set; }
+        DbSet<AdminCartItem> adminCartItems { get; set; }
 
         int SaveChanges(bool acceptAllChangesOnSuccess);
         int SaveChanges();
