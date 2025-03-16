@@ -2,6 +2,7 @@
 using Etar.Application.Services.Admins.User.Commands.AddNewAdmin;
 using Etar.Application.Services.Admins.User.Commands.RemoveAdmin;
 using Etar.Application.Services.Admins.User.Queries.GetAdmins;
+using Etar.Application.Services.Admins.User.Queries.SignInAdmin;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +17,7 @@ namespace Etar.Application.Services.Admins.User
         IAddNewAdminService addNewAdminService { get; }
         IGetAdminsService getAdminsService { get; }
         IRemoveAdminService removeAdminService { get; }
+        ISignInAdminService signInAdminService { get; }
     }
 
     public class UserService :IUserService
@@ -52,6 +54,15 @@ namespace Etar.Application.Services.Admins.User
             {
 
                 return _removeAdmin = _removeAdmin ?? new RemoveAdminService(_context);
+            }
+        }
+
+        private ISignInAdminService _signInAdmin;
+        public ISignInAdminService signInAdminService
+        {
+            get
+            {
+                return _signInAdmin = _signInAdmin ?? new SignInAdminService(_context);
             }
         }
     }

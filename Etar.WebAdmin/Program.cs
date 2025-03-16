@@ -2,6 +2,7 @@ using Etar.Application.Interfaces.Context;
 using Etar.Application.Interfaces.Services.Admin;
 using Etar.Application.Services.Admins;
 using Etar.Presistance.Context;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,6 +13,18 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IDataBaseContext, DataBaseContext>();
 builder.Services.AddScoped<IAdminServices, AdminServices>();
 builder.Services.AddDbContext<DataBaseContext>(options => options.UseSqlServer(connectionStr));
+
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+    options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+}).AddCookie(options =>
+{
+    options.LoginPath = new PathString("/Home/Index");
+    options.ExpireTimeSpan = TimeSpan.FromDays(1);
+});
+
 
 var app = builder.Build();
 
@@ -28,10 +41,12 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+
+app.UseAuthorization();
 app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Home}/{action=SignIn}/{id?}");
 
 app.Run();
