@@ -1,0 +1,56 @@
+﻿using Etar.Application.Interfaces.Context;
+using Etar.Application.Services.Admins.Cart.Commands.AddItem;
+using Etar.Application.Services.Admins.Cart.Commands.RemoveItem;
+using Etar.Application.Services.Admins.Cart.Queries.GetCart;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Etar.Application.Services.Admins.Cart
+{
+    public interface ICartService
+    {
+        IAddItemService AddItemService { get; }
+        IRemoveItemService RemoveItemService { get; }
+        IGetCartService GetCartService { get; }
+    }
+
+    public class CartService : ICartService
+    {
+        private readonly IDataBaseContext _context;
+
+        public CartService (IDataBaseContext context)
+        {
+            _context = context;
+        }
+
+        private IAddItemService _addItem;
+        public IAddItemService AddItemService
+        {
+            get
+            {
+                return _addItem = _addItem ?? new AddItemService(_context);
+            }
+        }
+
+        private IRemoveItemService _removeItem;
+        public IRemoveItemService RemoveItemService
+        {
+            get
+            {
+                return _removeItem = _removeItem ?? new RemoveItemService(_context);
+            }
+        }
+
+        private IGetCartService _getCart;
+        public IGetCartService GetCartService
+        {
+            get
+            {
+                return _getCart = _getCart ?? new GetCartService(_context);
+            }
+        }
+    }
+}

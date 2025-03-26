@@ -20,5 +20,7 @@ namespace Etar.Domain.Entities.Carts
         public ICollection<AdminCartItem> Items { get; set; }
 
         public double TotalPrice { get; set; }
+
+        public bool IsFinished { get; set; }
     }
 }

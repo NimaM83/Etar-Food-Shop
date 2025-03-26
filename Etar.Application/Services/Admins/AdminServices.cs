@@ -1,5 +1,6 @@
 ﻿using Etar.Application.Interfaces.Context;
 using Etar.Application.Interfaces.Services.Admin;
+using Etar.Application.Services.Admins.Cart;
 using Etar.Application.Services.Admins.Food;
 using Etar.Application.Services.Admins.Table;
 using Etar.Application.Services.Admins.User;
@@ -43,6 +44,15 @@ namespace Etar.Application.Services.Admins
             get
             {
                 return _tableService = _tableService?? new TableService(_context);
+            }
+        }
+
+        private ICartService _cartServices;
+        public ICartService CartServices
+        {
+            get
+            {
+                return _cartServices = _cartServices ?? new CartService(_context);
             }
         }
     }

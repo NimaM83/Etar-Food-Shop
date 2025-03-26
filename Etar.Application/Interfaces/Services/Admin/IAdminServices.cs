@@ -1,4 +1,5 @@
-﻿using Etar.Application.Services.Admins.Food;
+﻿using Etar.Application.Services.Admins.Cart;
+using Etar.Application.Services.Admins.Food;
 using Etar.Application.Services.Admins.Table;
 using Etar.Application.Services.Admins.User;
 using System;
@@ -14,5 +15,6 @@ namespace Etar.Application.Interfaces.Services.Admin
         IUserService UserServices { get; }
         IFoodService FoodServices { get; }
         ITableService TableServices { get; }
+        ICartService CartServices { get; }
     }
 }
