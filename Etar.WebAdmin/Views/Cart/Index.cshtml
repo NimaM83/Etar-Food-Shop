@@ -42,7 +42,7 @@
         <img src="~/assets/img/breadcrumb/br-shape-1.webp" alt="Image" class="br-shape-one position-absolute sm-none bounce">
         <img src="~/assets/img/breadcrumb/br-shape-2.webp" alt="Image" class="br-shape-two position-absolute sm-none moveHorizontal">
         <img src="~/assets/img/breadcrumb/br-shape-3.webp" alt="Image" class="br-shape-three position-absolute top-0 end-0 h-100">
-        <div class="container text-center ps-xxl-4"
+        <div class="container text-center ps-xxl-4">
             <h2 class="br-title text-white">
                     سبد خرید
             </h2>
@@ -74,6 +74,8 @@
                                 <th scope="col" class="text-white f-secondary fs-xxl-18">قیمت تک</th>
                                 <th scope="col" class="text-white f-secondary fs-xxl-18">قیمت تعداد</th>
                                 <th scope="col" class="text-white f-secondary fs-xxl-18">تعداد</th>
+                                <th scope="col" class="text-white f-secondary fs-xxl-18"></th>
+                                <th scope="col" class="text-white f-secondary fs-xxl-18"></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -101,14 +103,20 @@
 
                                     <td>
                                         <div class="v-counter">
-                                            <a class="minusBtn" asp-action="UpdateInventory" asp-route-id="@item.Id" asp-route-editAmount="-1">
+                                            <a class="minusBtn" asp-action="RemoveItem" asp-route-foodId="@item.FoodId" asp-route-isDecrease="@true">
 
                                             </a>
                                             <input type="text" size="25" value="@item.count" asp-for="@item.count" class="count">
-                                            <a class="plusBtn" asp-action="UpdateInventory" asp-route-id="@item.Id" asp-route-editAmount="+1">
+                                            <a class="plusBtn" asp-action="AddItem" asp-route-foodId="@item.FoodId">
 
                                             </a>
                                         </div>
+                                    </td>
+
+                                    <td>
+                                        <a class="cart-action bg-transparent border-0 p-0" asp-action="RemoveItem" asp-route-foodId="@item.FoodId">
+                                            <i class="ri-delete-bin-6-line"></i>
+                                        </a>
                                     </td>
 
 
@@ -117,6 +125,7 @@
 
                         </tbody>
                     </table>
+                    <br /><br /><br />
 
                     <div class="row">
                         <div class="col-xl-6 offset-xl-3 col-lg-8 offset-lg-2 col-md-8 offset-md-2">
@@ -128,7 +137,7 @@
                                         <span class="text-white"><b>@Model.Data.First().TotalPrice.ToString("n0") تومان</b></span>
                                     </div>
                                 </div>
-                                <a href="checkout.html" class="btn style-one round-5">تایید سبد و ثبت سفارش</a>
+                                <a asp-action="Confirm" asp-route-cartId="@Model.Data.First().Id" class="btn style-one round-5">تایید سبد و ثبت سفارش</a>
                             </div>
                         </div>
                     </div>
