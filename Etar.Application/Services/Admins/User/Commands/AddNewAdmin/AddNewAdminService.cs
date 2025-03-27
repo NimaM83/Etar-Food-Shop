@@ -33,6 +33,7 @@ namespace Etar.Application.Services.Admins.User.Commands.AddNewAdmin
                                 Password = hasher.HashPassword(request.Password),
 
                             });
+                            
 
                             _context.SaveChanges();
 

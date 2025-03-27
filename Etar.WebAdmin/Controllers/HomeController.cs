@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using System.Security.Claims;
+using Etar.Common.Utilities;
 
 namespace Etar.WebAdmin.Controllers
 {
@@ -28,6 +29,7 @@ namespace Etar.WebAdmin.Controllers
         public IActionResult SignIn(ReqSignInAdminDto request)
         {
             var result = _services.UserServices.signInAdminService.Execute(request);
+            CookiesManager cookiesManager = new CookiesManager();
 
             if (result.IsSuccess)
             {
@@ -46,6 +48,7 @@ namespace Etar.WebAdmin.Controllers
                     ExpiresUtc = DateTime.Now.AddDays(1),
                 };
                 HttpContext.SignInAsync(principal, properties);
+                cookiesManager.Add(HttpContext, "Id", result.Data.Id.ToString(), 1);
 
                 return RedirectToAction("Index");
             }

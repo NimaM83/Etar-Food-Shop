@@ -1,0 +1,173 @@
+﻿@using Etar.Application.Services.Admins.Food.Queries.GetFoods
+@using Etar.Domain.Entities
+@using Etar.Domain.Entities.Foods
+@model Result<List<ResGetFoodsDto>>
+@{
+    Layout = null;
+    List<FoodCategory> categories = ViewBag.Categories;
+}
+
+<html lang="zxx" class="theme-light">
+<!-- Mirrored from templates.hibotheme.com/etar/default/cart.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 21 Mar 2024 22:14:01 GMT -->
+<head>
+
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Link of CSS files -->
+    <link rel="stylesheet" href="~/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/assets/css/swiper.bundle.min.css">
+    <link rel="stylesheet" href="~/assets/css/scrollcue.min.css">
+    <link rel="stylesheet" href="~/assets/css/remixicon.css">
+    <link rel="stylesheet" href="~/assets/css/header.css">
+    <link rel="stylesheet" href="~/assets/css/style.css">
+    <link rel="stylesheet" href="~/assets/css/footer.css">
+    <link rel="stylesheet" href="~/assets/css/responsive.css">
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css">
+
+    <title>ایتار-لیست غذا ها</title>
+    <link rel="icon" type="image/png" href="~/assets/img/favicon.webp">
+</head>
+<body class="bg-bunk loaded">
+
+    <!--  Preloader Start -->
+    <div class="loader-wrapper">
+        <div class="loader"></div>
+        <div class="loader-section section-left"></div>
+        <div class="loader-section section-right"></div>
+    </div>
+    <!--  Preloader End -->
+
+    <div class="breadcrumb-wrap bg-mild position-relative">
+        <img src="~/assets/img/breadcrumb/br-shape-1.webp" alt="Image" class="br-shape-one position-absolute sm-none bounce">
+        <img src="~/assets/img/breadcrumb/br-shape-2.webp" alt="Image" class="br-shape-two position-absolute sm-none moveHorizontal">
+        <img src="~/assets/img/breadcrumb/br-shape-3.webp" alt="Image" class="br-shape-three position-absolute top-0 end-0 h-100">
+        <div class="container text-center ps-xxl-4">
+            <h2 class="br-title text-white">لیست غذا ها</h2>
+            <ul class="br-menu list-unstyle">
+                <li class="fs-xxl-20">رستوران ایتار</li>
+                <li class="fs-xxl-20"><a asp-controller="Home" asp-action="Index">صفحه اصلی</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Cart section start -->
+    <div class="container style-two">
+        <div class="cart-wrap ptb-130">
+            <div class="filter-recipe d-flex align-items-center justify-content-md-between">
+                <ul class="nav nav-tabs recipe-tablist list-unstyle border-0" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab_1" type="button" role="tab" aria-selected="false" tabindex="-1">
+                            <a asp-action="Inventory" style="color: white">
+                                همه دسته بندی ها
+                            </a>
+                        </button>
+                    </li>
+
+                    @foreach (var item in categories)
+                    {
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab_1" type="button" role="tab" aria-selected="false" tabindex="-1">
+                                <a asp-action="Inventory" asp-route-catId="@item.Id" style="color: white">
+                                    @item.Name
+                                </a>
+                            </button>
+                        </li>
+                    }
+
+
+                </ul>
+            </div>
+            @if (Model.IsSuccess)
+            {
+                <button class="btn btn-warning">
+                    <a asp-controller="Cart" asp-action="Index" style="color: white">
+                        سبد خرید
+                    </a>
+                </button>
+                
+                
+
+                <div class="cart-table px-xxl-3 mb-65">
+                    <table class="table text-nowrap">
+                        <thead>
+                            <tr>
+                                <th scope="col" class="text-white f-secondary fs-xxl-18">نام </th>
+                                <th scope="col" class="text-white f-secondary fs-xxl-18">دسته بندی</th>
+                                <th scope="col" class="text-white f-secondary fs-xxl-18">موجودی</th>
+                                <th scope="col" class="text-white f-secondary fs-xxl-18">تعداد</th>
+                                <th scope="col" class="text-white f-secondary fs-xxl-18"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @foreach (var item in Model.Data)
+                            {
+                                <tr>
+                                    <td>
+                                        <h6 class="fs-18 text-white fw-bold">
+                                            @item.Name
+                                        </h6>
+                                    </td>
+
+                                    <td>
+                                        <h6 class="fs-18 text-white fw-bold">
+                                            @item.Category
+                                        </h6>
+                                    </td>
+
+                                    <td>
+                                        <div class="v-counter">
+                                            <h6 class="fs-18 text-white fw-bold">
+                                                @item.Inventory
+                                            </h6>
+                                        </div>
+                                    </td>
+
+                                    <td>
+                                        <button class="btn btn-primary">
+                                            <a asp-controller="Cart" asp-action="AddItem" asp-route-foodId="@item.Id" style="color: white">
+                                                افزودن به سبد
+                                            </a>
+                                        </button>
+                                    </td>
+
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+
+
+            }
+
+            else
+            {
+                <h3 class="text text-danger">
+                    @Model.Message
+                </h3>
+            }
+
+        </div>
+    </div>
+    <!-- Cart section end -->
+    <!-- Back to Top -->
+    <button type="button" id="backtotop" class="position-fixed text-center border-0 p-0">
+        <i class="ri-arrow-up-line"></i>
+    </button>
+
+    <!-- Link of JS files -->
+    <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script src="~/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="~/assets/js/swiper.bundle.min.js"></script>
+    <script src="~/assets/js/fslightbox.js"></script>
+    <script src="~/assets/js/scrollcue.min.js"></script>
+    <script src="~/assets/js/main.js"></script>
+
+
+
+</body><!-- Mirrored from templates.hibotheme.com/etar/default/cart.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 21 Mar 2024 22:14:03 GMT -->
+</html>
