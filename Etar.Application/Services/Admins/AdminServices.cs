@@ -53,7 +53,7 @@ namespace Etar.Application.Services.Admins
         {
             get
             {
-                return _cartServices = _cartServices ?? new CartService(_context);
+                return _cartServices = _cartServices ?? new CartService(_context, OrderServices);
             }
         }
 

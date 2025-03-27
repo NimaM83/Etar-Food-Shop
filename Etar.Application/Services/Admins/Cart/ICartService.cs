@@ -1,8 +1,10 @@
 ﻿using Etar.Application.Interfaces.Context;
+using Etar.Application.Interfaces.Services.Admin;
 using Etar.Application.Services.Admins.Cart.Commands.AddItem;
 using Etar.Application.Services.Admins.Cart.Commands.ConfirmCart;
 using Etar.Application.Services.Admins.Cart.Commands.RemoveItem;
 using Etar.Application.Services.Admins.Cart.Queries.GetCart;
+using Etar.Application.Services.Admins.Order;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,9 +24,11 @@ namespace Etar.Application.Services.Admins.Cart
     public class CartService : ICartService
     {
         private readonly IDataBaseContext _context;
+        private readonly IOrderService _orderServices;
 
-        public CartService (IDataBaseContext context)
+        public CartService (IDataBaseContext context, IOrderService orderServices)
         {
+            _orderServices = orderServices;
             _context = context;
         }
 
@@ -60,7 +64,7 @@ namespace Etar.Application.Services.Admins.Cart
         {
             get
             {
-                return _confirmCart = _confirmCart ?? new ConfirmCartService(_context);
+                return _confirmCart = _confirmCart ?? new ConfirmCartService(_context,_orderServices);
             }
         }
     }

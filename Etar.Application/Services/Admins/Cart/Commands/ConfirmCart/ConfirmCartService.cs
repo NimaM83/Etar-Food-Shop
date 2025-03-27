@@ -1,13 +1,18 @@
 ﻿using Etar.Application.Interfaces.Context;
+using Etar.Application.Interfaces.Services.Admin;
+using Etar.Application.Services.Admins.Order;
 using Etar.Domain.Entities;
+using Etar.Domain.Entities.Orders;
 
 namespace Etar.Application.Services.Admins.Cart.Commands.ConfirmCart
 {
     public class ConfirmCartService : IConfirmCartService
     {
         private readonly IDataBaseContext _context;
-        public ConfirmCartService(IDataBaseContext context)
+        private readonly IOrderService _orderService;
+        public ConfirmCartService(IDataBaseContext context, IOrderService orderService)
         {
+            _orderService = orderService;
             _context = context;
         }
 
@@ -20,10 +25,12 @@ namespace Etar.Application.Services.Admins.Cart.Commands.ConfirmCart
                 foundedCart.IsFinished = true;
                 _context.SaveChanges();
 
+                Result res = _orderService.AddOrderService.Execute(cartId, EOrderUser.Admin);
+
                 return new Result()
                 {
-                    IsSuccess = true,
-                    Message = "سبد با موفقیت تایید شد"
+                    IsSuccess = res.IsSuccess,
+                    Message = res.Message
                 };
             }
 
