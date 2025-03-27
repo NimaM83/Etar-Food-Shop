@@ -2,6 +2,7 @@
 using Etar.Domain.Entities.Addresses;
 using Etar.Domain.Entities.Carts;
 using Etar.Domain.Entities.Foods;
+using Etar.Domain.Entities.Orders;
 using Etar.Domain.Entities.Table;
 using Etar.Domain.Entities.Users;
 using Microsoft.EntityFrameworkCore;
@@ -26,6 +27,7 @@ namespace Etar.Presistance.Context
         public DbSet<Table> tables { get; set; }
         public DbSet<AdminCart> adminCarts { get; set; }
         public DbSet<AdminCartItem> adminCartItems { get; set; }
+        public DbSet<Order> orders { get; set; }
 
     }
 }

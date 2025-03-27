@@ -1,6 +1,7 @@
 ﻿using Etar.Domain.Entities.Addresses;
 using Etar.Domain.Entities.Carts;
 using Etar.Domain.Entities.Foods;
+using Etar.Domain.Entities.Orders;
 using Etar.Domain.Entities.Table;
 using Etar.Domain.Entities.Users;
 using Microsoft.EntityFrameworkCore;
@@ -22,6 +23,7 @@ namespace Etar.Application.Interfaces.Context
         DbSet<Table> tables { get; set; }
         DbSet<AdminCart> adminCarts { get; set; }
         DbSet<AdminCartItem> adminCartItems { get; set; }
+        DbSet<Order> orders { get; set; }
 
         int SaveChanges(bool acceptAllChangesOnSuccess);
         int SaveChanges();
