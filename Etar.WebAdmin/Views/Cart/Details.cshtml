@@ -1,15 +1,11 @@
-﻿@using Etar.Application.Services.Admins.Cart.Queries.GetCart
+﻿@using Etar.Application.Services.Admins.Cart.Queries.GetCartDetails
 @using Etar.Domain.Entities
-@model Result<List<ResGetCartDto>>
-@{
-    Layout = null;
-}
 
-<html lang="zxx" class="theme-light">
-<!-- Mirrored from templates.hibotheme.com/etar/default/cart.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 21 Mar 2024 22:14:01 GMT -->
+@model Result<CartDetailsDto>
+
+<html lang="zxx" class="theme-dark">
+<!-- Mirrored from templates.hibotheme.com/etar/default/shop-details.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 21 Mar 2024 22:14:29 GMT -->
 <head>
-
-
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -25,7 +21,7 @@
     <link rel="stylesheet" href="~/assets/css/responsive.css">
     <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css">
 
-    <title>ایتار-سبد خرید</title>
+    <title>ایتار-جزئیات سبد</title>
     <link rel="icon" type="image/png" href="~/assets/img/favicon.webp">
 </head>
 <body class="bg-bunk loaded">
@@ -37,31 +33,24 @@
         <div class="loader-section section-right"></div>
     </div>
     <!--  Preloader End -->
-
+    <!-- Breadcrumb Section Start -->
     <div class="breadcrumb-wrap bg-mild position-relative">
         <img src="~/assets/img/breadcrumb/br-shape-1.webp" alt="Image" class="br-shape-one position-absolute sm-none bounce">
         <img src="~/assets/img/breadcrumb/br-shape-2.webp" alt="Image" class="br-shape-two position-absolute sm-none moveHorizontal">
         <img src="~/assets/img/breadcrumb/br-shape-3.webp" alt="Image" class="br-shape-three position-absolute top-0 end-0 h-100">
         <div class="container text-center ps-xxl-4">
-            <h2 class="br-title text-white">
-                    سبد خرید
-            </h2>
+            <h2 class="br-title text-white">جزئیات سبد</h2>
             <ul class="br-menu list-unstyle">
                 <li class="fs-xxl-20">رستوران ایتار</li>
-                <li class="fs-xxl-20"><a asp-controller="Home" asp-action="Index">صفحه اصلی</a></li>
+                <li class="fs-xxl-20"><a asp-action="ConfirmedCarts">لیست سبد ها</a></li>
             </ul>
         </div>
     </div>
-
+    <!-- Breadcrumb Section End -->
+    <!-- جزئیات فروشگاه section Start -->
     <!-- Cart section start -->
     <div class="container style-two">
         <div class="cart-wrap ptb-130">
-    
-            <button class="btn btn-warning">
-                <a asp-action="ConfirmedCarts" style="color: white">
-                    سبد های ثبت شده
-                </a>
-            </button>
 
             @if (Model.IsSuccess)
             {
@@ -71,21 +60,26 @@
                         <thead>
                             <tr>
                                 <th scope="col" class="text-white f-secondary fs-xxl-18">نام </th>
+                                <th scope="col" class="text-white f-secondary fs-xxl-18">تعداد</th>
                                 <th scope="col" class="text-white f-secondary fs-xxl-18">قیمت تک</th>
                                 <th scope="col" class="text-white f-secondary fs-xxl-18">قیمت تعداد</th>
-                                <th scope="col" class="text-white f-secondary fs-xxl-18">تعداد</th>
-                                <th scope="col" class="text-white f-secondary fs-xxl-18"></th>
                                 <th scope="col" class="text-white f-secondary fs-xxl-18"></th>
                             </tr>
                         </thead>
                         <tbody>
 
-                            @foreach (var item in Model.Data.First().Items)
+                            @foreach (var item in Model.Data.Items)
                             {
                                 <tr>
                                     <td>
                                         <h6 class="fs-18 text-white fw-bold">
                                             @item.FoodName
+                                        </h6>
+                                    </td>
+
+                                    <td>
+                                        <h6 class="fs-18 text-white fw-bold">
+                                            @item.count
                                         </h6>
                                     </td>
 
@@ -101,25 +95,6 @@
                                         </h6>
                                     </td>
 
-                                    <td>
-                                        <div class="v-counter">
-                                            <a class="minusBtn" asp-action="RemoveItem" asp-route-foodId="@item.FoodId" asp-route-isDecrease="@true">
-
-                                            </a>
-                                            <input type="text" size="25" value="@item.count" asp-for="@item.count" class="count">
-                                            <a class="plusBtn" asp-action="AddItem" asp-route-foodId="@item.FoodId">
-
-                                            </a>
-                                        </div>
-                                    </td>
-
-                                    <td>
-                                        <a class="cart-action bg-transparent border-0 p-0" asp-action="RemoveItem" asp-route-foodId="@item.FoodId">
-                                            <i class="ri-delete-bin-6-line"></i>
-                                        </a>
-                                    </td>
-
-
                                 </tr>
                             }
 
@@ -134,10 +109,16 @@
                                 <div class="cart-total-wrap">
                                     <div class="cart-total-item">
                                         <p class="text-white"><b>جمع کل</b></p>
-                                        <span class="text-white"><b>@Model.Data.First().TotalPrice.ToString("n0") تومان</b></span>
+                                        <span class="text-white"><b>@Model.Data.TotalPrice.ToString("n0") تومان</b></span>
                                     </div>
                                 </div>
-                                <a asp-action="Confirm" asp-route-cartId="@Model.Data.First().Id" class="btn style-one round-5">تایید سبد و ثبت سفارش</a>
+
+                                <div class="cart-total-wrap">
+                                    <div class="cart-total-item">
+                                        <p class="text-white"><b>ادمین ثبت کننده</b></p>
+                                        <span class="text-white"><b>@Model.Data.AdminName</b></span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -156,8 +137,9 @@
         </div>
     </div>
     <!-- Cart section end -->
+    <!-- جزئیات فروشگاه section End -->
     <!-- Back to Top -->
-    <button type="button" id="backtotop" class="position-fixed text-center border-0 p-0">
+    <button type="button" id="backtotop" class="position-fixed text-center border-0 p-0" style="opacity: 0;">
         <i class="ri-arrow-up-line"></i>
     </button>
 
@@ -171,5 +153,5 @@
 
 
 
-</body><!-- Mirrored from templates.hibotheme.com/etar/default/cart.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 21 Mar 2024 22:14:03 GMT -->
+</body><!-- Mirrored from templates.hibotheme.com/etar/default/shop-details.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 21 Mar 2024 22:14:29 GMT -->
 </html>

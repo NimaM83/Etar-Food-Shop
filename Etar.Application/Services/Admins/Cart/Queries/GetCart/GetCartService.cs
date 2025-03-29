@@ -66,7 +66,8 @@ namespace Etar.Application.Services.Admins.Cart.Queries.GetCart
                 };
             }
 
-            var foundedCarts = _context.adminCarts.Where(c => c.AdminId == adminId && c.IsFinished).ToList();
+            var foundedCarts = _context.adminCarts.Where(c => c.AdminId == adminId && c.IsFinished)
+                               .Include(c => c.Admin).ToList();
 
             if(foundedCarts.Any())
             {
@@ -91,6 +92,7 @@ namespace Etar.Application.Services.Admins.Cart.Queries.GetCart
                     result.Add(new ResGetCartDto()
                     {
                         Id = cart.Id,
+                        AdminName = cart.Admin.UserName,
                         TotalPrice = cart.TotalPrice,
                         Items = items
                     });

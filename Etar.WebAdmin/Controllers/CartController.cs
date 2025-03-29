@@ -37,5 +37,16 @@ namespace Etar.WebAdmin.Controllers
         {
             return Json(_services.CartServices.ConfirmCartService.Execute(cartId));
         }
+
+        public IActionResult ConfirmedCarts()
+        {
+            Guid adminId = Guid.Parse(_cookies.GetValue(HttpContext, "Id"));
+            return View(_services.CartServices.GetCartService.Execute(adminId, true));
+        }
+
+        public IActionResult Details(Guid cartId)
+        {
+            return View(_services.CartServices.GetCartDetailsService.Execute(cartId));
+        }
     }
 }

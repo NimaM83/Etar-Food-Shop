@@ -4,6 +4,7 @@ using Etar.Application.Services.Admins.Cart.Commands.AddItem;
 using Etar.Application.Services.Admins.Cart.Commands.ConfirmCart;
 using Etar.Application.Services.Admins.Cart.Commands.RemoveItem;
 using Etar.Application.Services.Admins.Cart.Queries.GetCart;
+using Etar.Application.Services.Admins.Cart.Queries.GetCartDetails;
 using Etar.Application.Services.Admins.Order;
 using System;
 using System.Collections.Generic;
@@ -19,6 +20,7 @@ namespace Etar.Application.Services.Admins.Cart
         IRemoveItemService RemoveItemService { get; }
         IGetCartService GetCartService { get; }
         IConfirmCartService ConfirmCartService { get; }
+        IGetCartDetailsService GetCartDetailsService { get; }
     }
 
     public class CartService : ICartService
@@ -65,6 +67,15 @@ namespace Etar.Application.Services.Admins.Cart
             get
             {
                 return _confirmCart = _confirmCart ?? new ConfirmCartService(_context,_orderServices);
+            }
+        }
+
+        private IGetCartDetailsService _getCartDetails;
+        public IGetCartDetailsService GetCartDetailsService
+        {
+            get
+            {
+                return _getCartDetails = _getCartDetails ?? new GetCartDetailsService(_context);
             }
         }
     }

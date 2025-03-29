@@ -3,6 +3,7 @@
     public class ResGetCartDto
     {
         public Guid Id { get; set; }
+        public string AdminName { get; set; }
         
         public List<GetCartItemDto> Items { get; set; }
 
