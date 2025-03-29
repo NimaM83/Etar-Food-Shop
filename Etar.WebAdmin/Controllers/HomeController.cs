@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using System.Security.Claims;
 using Etar.Common.Utilities;
+using Etar.Domain.Entities.Users;
 
 namespace Etar.WebAdmin.Controllers
 {
@@ -50,7 +51,12 @@ namespace Etar.WebAdmin.Controllers
                 HttpContext.SignInAsync(principal, properties);
                 cookiesManager.Add(HttpContext, "Id", result.Data.Id.ToString(), 1);
 
-                return RedirectToAction("Index");
+                if(result.Data.Role == EAdminRoles.Admin)
+                {
+                    return RedirectToAction("Index");
+                }
+
+                return Redirect("/Owner/Home/Index");
             }
 
             return Json(result);

@@ -9,16 +9,19 @@
   <ItemGroup>
     <Content Remove="wwwroot\assets\img\icons\category.svg" />
     <Content Remove="wwwroot\assets\img\icons\Order.svg" />
+    <Content Remove="wwwroot\assets\img\icons\Report.svg" />
   </ItemGroup>
 
   <ItemGroup>
     <_ContentIncludedByDefault Remove="wwwroot\assets\img\icons\category.svg" />
     <_ContentIncludedByDefault Remove="wwwroot\assets\img\icons\Order.svg" />
+    <_ContentIncludedByDefault Remove="wwwroot\assets\img\icons\Report.svg" />
   </ItemGroup>
 
   <ItemGroup>
     <None Include="wwwroot\assets\img\icons\category.svg" />
     <None Include="wwwroot\assets\img\icons\Order.svg" />
+    <None Include="wwwroot\assets\img\icons\Report.svg" />
   </ItemGroup>
 
   <ItemGroup>
@@ -29,6 +32,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.7" />
   </ItemGroup>
 
   <ItemGroup>

@@ -29,6 +29,7 @@ namespace Etar.Application.Services.Admins.User.Queries.SignInAdmin
                         {
                             Id = foundedAdmin.Id,
                             UserName = foundedAdmin.UserName,
+                            Role =  foundedAdmin.Role
                         }
                     };
                 }

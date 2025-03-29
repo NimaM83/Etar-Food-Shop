@@ -1,0 +1,90 @@
+﻿
+@{
+    Layout = null;
+}
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Link of CSS files -->
+    <link rel="stylesheet" href="~/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/assets/css/swiper.bundle.min.css">
+    <link rel="stylesheet" href="~/assets/css/scrollcue.min.css">
+    <link rel="stylesheet" href="~/assets/css/remixicon.css">
+    <link rel="stylesheet" href="~/assets/css/header.css">
+    <link rel="stylesheet" href="~/assets/css/style.css">
+    <link rel="stylesheet" href="~/assets/css/footer.css">
+    <link rel="stylesheet" href="~/assets/css/responsive.css">
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="./~/assets/css/persian-datepicker.min.css">
+    <link rel="stylesheet" href="./~/assets/css/main.css">
+
+    <title>پنل مدیر</title>
+    <link rel="icon" type="image/png" href="~/assets/img/favicon.webp">
+</head>
+
+<body>
+    
+    <div class="breadcrumb-wrap bg-mild position-relative">
+        <img src="~/assets/img/breadcrumb/br-shape-1.webp" alt="Image" class="br-shape-one position-absolute sm-none bounce">
+        <img src="~/assets/img/breadcrumb/br-shape-2.webp" alt="Image" class="br-shape-two position-absolute sm-none moveHorizontal">
+        <img src="~/assets/img/breadcrumb/br-shape-3.webp" alt="Image" class="br-shape-three position-absolute top-0 end-0 h-100">
+        <div class="container text-center ps-xxl-4">
+            <h2 class="br-title text-white">صفحه اصلی</h2>
+            <ul class="br-menu list-unstyle">
+                <li class="fs-xxl-20">رستوران ایتار</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="bg-cod pt-130 pb-100">
+        <div class="container">
+            <div class="feature-card-wrap style-one d-flex flex-wrap justify-content-center">
+                <div class="feature-card position-relative mb-30" data-cue="slideInUp" data-show="true" style="animation-name: slideInUp; animation-duration: 600ms; animation-timing-function: ease; animation-delay: 0ms; animation-direction: normal; animation-fill-mode: both;">
+                    <div class="feature-icon">
+                        <img src="~/assets/img/icons/Report.svg" width="50" height="60" alt="Icon">
+                    </div>
+                    <h3 class="fs-26"></h3>
+                    <h3 style="color: wheat" >گزارش سفارشات</h3>
+                    <p style="color: white" class="fw-bold">گزارش سفارشات را مشاهده کنید</p>
+                    <a asp-controller="Order" asp-action="Index" class="link style-one fw-bold fs-xxl-18" style="font-size: var(--fontSize);">ورود به صفحه</a><br>
+                </div>
+                <div class="feature-card position-relative mb-30" data-cue="slideInUp" data-show="true" style="animation-name: slideInUp; animation-duration: 600ms; animation-timing-function: ease; animation-delay: 180ms; animation-direction: normal; animation-fill-mode: both;">
+                    <div class="feature-icon">
+                        <img src="~/assets/img/icons/adminManage.svg" width="50" height="60" alt="Icon">
+                    </div>
+                    <h3 style="color: wheat" class="fs-26">ادمین  ها</h3>
+                    <p style="color: white" class="fw-bold">عملکرد ادمین  هارا مشاهده و حساب آنهارا مدیریت کنید</p>
+                    <a asp-controller="Foods" asp-action="Index" class="link style-one fs-xxl-18">ورود به صفحه</a>
+                </div>
+                <div class="feature-card position-relative mb-30" data-cue="slideInUp" data-show="true" style="animation-name: slideInUp; animation-duration: 600ms; animation-timing-function: ease; animation-delay: 360ms; animation-direction: normal; animation-fill-mode: both;">
+                    <div class="feature-icon">
+                        <img src="~/assets/img/icons/owner.svg" width="50" height="60" alt="Icon">
+                    </div>
+                    <h3 style="color: wheat" class="fs-26">حساب کاربری</h3>
+                    <p style="color: white" class="fw-bold">حساب کاربری خود را مشاهده و آن را ویرایش کنید</p>
+                    <a asp-controller="Foods" asp-action="Inventory" class="link style-one fs-xxl-18">ورود به صفحه</a>
+                </div>
+
+                <div class="feature-card position-relative mb-30" data-cue="slideInUp" data-show="true" style="animation-name: slideInUp; animation-duration: 600ms; animation-timing-function: ease; animation-delay: 0ms; animation-direction: normal; animation-fill-mode: both;">
+                    <div hidden class="feature-icon">
+                        <img src="~/assets/img/icons/cutlary.svg" alt="Icon">
+                    </div>
+                    <h3 hidden class="fs-26"></h3>
+                    <h3 hidden style="color: wheat">مدیریت ادمین ها</h3>
+                    <p hidden style="color: white" class="fw-bold">ادمین جدیدی اضافه، حذف و یا ویرایش کنید</p>
+                    <a hidden href="cafe-menu.html" class="link style-one fw-bold fs-xxl-18" style="font-size: var(--fontSize);">ورود به صفحه</a><br>
+                </div>
+               
+            </div>
+            <br /><br /><br />
+
+        </div>
+
+        
+    </div>
+
+</body>
+

@@ -31,6 +31,7 @@ namespace Etar.Application.Services.Admins.User.Commands.AddNewAdmin
                             {
                                 UserName = request.UserName,
                                 Password = hasher.HashPassword(request.Password),
+                                Role  = request.Role
 
                             });
                             
