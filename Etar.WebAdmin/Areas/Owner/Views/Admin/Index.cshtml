@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     Layout = null;
 }
 
@@ -21,12 +20,12 @@
     <link rel="stylesheet" href="./~/assets/css/persian-datepicker.min.css">
     <link rel="stylesheet" href="./~/assets/css/main.css">
 
-    <title>پنل مدیر</title>
+    <title>مدیریت ادمین ها</title>
     <link rel="icon" type="image/png" href="~/assets/img/favicon.webp">
 </head>
 
 <body>
-    
+
     <div class="breadcrumb-wrap bg-mild position-relative">
         <img src="~/assets/img/breadcrumb/br-shape-1.webp" alt="Image" class="br-shape-one position-absolute sm-none bounce">
         <img src="~/assets/img/breadcrumb/br-shape-2.webp" alt="Image" class="br-shape-two position-absolute sm-none moveHorizontal">
@@ -35,6 +34,7 @@
             <h2 class="br-title text-white">صفحه اصلی</h2>
             <ul class="br-menu list-unstyle">
                 <li class="fs-xxl-20">رستوران ایتار</li>
+                <li class="fs-xxl-20"><a asp-area="Owner" asp-controller="Home" asp-action="Index" >صفحه اصلی</a></li>
             </ul>
         </div>
     </div>
@@ -44,27 +44,27 @@
             <div class="feature-card-wrap style-one d-flex flex-wrap justify-content-center">
                 <div class="feature-card position-relative mb-30" data-cue="slideInUp" data-show="true" style="animation-name: slideInUp; animation-duration: 600ms; animation-timing-function: ease; animation-delay: 0ms; animation-direction: normal; animation-fill-mode: both;">
                     <div class="feature-icon">
-                        <img src="~/assets/img/icons/Report.svg" width="50" height="60" alt="Icon">
+                        <img src="~/assets/img/icons/adminList.svg" width="50" height="60" alt="Icon">
                     </div>
                     <h3 class="fs-26"></h3>
-                    <h3 style="color: wheat" >گزارش سفارشات</h3>
-                    <p style="color: white" class="fw-bold">گزارش سفارشات را مشاهده کنید</p>
+                    <h3 style="color: wheat">لیست ادمین ها</h3>
+                    <p style="color: white" class="fw-bold">لیست ادمین هارا مشاهده و سفارشات  آنها را برسی کنید</p>
                     <a asp-controller="Order" asp-action="Index" class="link style-one fw-bold fs-xxl-18" style="font-size: var(--fontSize);">ورود به صفحه</a><br>
                 </div>
                 <div class="feature-card position-relative mb-30" data-cue="slideInUp" data-show="true" style="animation-name: slideInUp; animation-duration: 600ms; animation-timing-function: ease; animation-delay: 180ms; animation-direction: normal; animation-fill-mode: both;">
                     <div class="feature-icon">
-                        <img src="~/assets/img/icons/adminManage.svg" width="50" height="60" alt="Icon">
+                        <img src="~/assets/img/icons/addAdmin.svg" width="50" height="60" alt="Icon">
                     </div>
-                    <h3 style="color: wheat" class="fs-26">ادمین  ها</h3>
-                    <p style="color: white" class="fw-bold">عملکرد ادمین  هارا مشاهده و حساب آنهارا مدیریت کنید</p>
-                    <a asp-area="Owner" asp-controller="Admin" asp-action="Index" class="link style-one fs-xxl-18">ورود به صفحه</a>
+                    <h3 style="color: wheat" class="fs-26">افزودن ادمین</h3>
+                    <p style="color: white" class="fw-bold">ادمین  جدیدی اضافه کنید</p>
+                    <a asp-controller="Foods" asp-action="Index" class="link style-one fs-xxl-18">ورود به صفحه</a>
                 </div>
                 <div class="feature-card position-relative mb-30" data-cue="slideInUp" data-show="true" style="animation-name: slideInUp; animation-duration: 600ms; animation-timing-function: ease; animation-delay: 360ms; animation-direction: normal; animation-fill-mode: both;">
                     <div class="feature-icon">
-                        <img src="~/assets/img/icons/owner.svg" width="50" height="60" alt="Icon">
+                        <img src="~/assets/img/icons/editAdmin.svg" width="50" height="60" alt="Icon">
                     </div>
-                    <h3 style="color: wheat" class="fs-26">حساب کاربری</h3>
-                    <p style="color: white" class="fw-bold">حساب کاربری خود را مشاهده و آن را ویرایش کنید</p>
+                    <h3 style="color: wheat" class="fs-26">تغییر ادمین</h3>
+                    <p style="color: white" class="fw-bold">ادمینی را ویرایش و یا حذف کنید</p>
                     <a asp-controller="Foods" asp-action="Inventory" class="link style-one fs-xxl-18">ورود به صفحه</a>
                 </div>
 
@@ -77,13 +77,13 @@
                     <p hidden style="color: white" class="fw-bold">ادمین جدیدی اضافه، حذف و یا ویرایش کنید</p>
                     <a hidden href="cafe-menu.html" class="link style-one fw-bold fs-xxl-18" style="font-size: var(--fontSize);">ورود به صفحه</a><br>
                 </div>
-               
+
             </div>
             <br /><br /><br />
 
         </div>
 
-        
+
     </div>
 
 </body>
