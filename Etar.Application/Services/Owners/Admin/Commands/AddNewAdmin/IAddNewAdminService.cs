@@ -5,10 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Etar.Application.Services.Admins.User.Commands.AddNewAdmin
+namespace Etar.Application.Services.Owners.Admin.Commands.AddNewAdmin
 {
     public interface IAddNewAdminService
     {
-        Result Execute(ReqAddNewAdminDto  request);
+        Result Execute(ReqAddNewAdminDto request);
     }
 }

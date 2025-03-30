@@ -43,6 +43,7 @@
 
   <ItemGroup>
     <Folder Include="Areas\Owner\Views\Shared\" />
+    <Folder Include="Views\Users\" />
   </ItemGroup>
 
 </Project>

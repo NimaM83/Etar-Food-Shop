@@ -2,25 +2,25 @@
 using Etar.Common;
 using Etar.Domain.Entities;
 
-namespace Etar.Application.Services.Admins.User.Commands.AddNewAdmin
+namespace Etar.Application.Services.Owners.Admin.Commands.AddNewAdmin
 {
     public class AddNewAdminService : IAddNewAdminService
     {
         private readonly IDataBaseContext _context;
 
-        public AddNewAdminService (IDataBaseContext context)
+        public AddNewAdminService(IDataBaseContext context)
         {
             _context = context;
         }
 
         public Result Execute(ReqAddNewAdminDto request)
-        { 
-            if(request.UserName.Length >= 5)
+        {
+            if (request.UserName.Length >= 5)
             {
                 // ادمینی با نام کاربری مشابه
                 var foundedAdmin = _context.admins.Where(a => a.UserName == request.UserName).FirstOrDefault();
 
-                if(foundedAdmin == null)
+                if (foundedAdmin == null)
                 {
                     if (request.Password.Length >= 8)
                     {
@@ -31,10 +31,10 @@ namespace Etar.Application.Services.Admins.User.Commands.AddNewAdmin
                             {
                                 UserName = request.UserName,
                                 Password = hasher.HashPassword(request.Password),
-                                Role  = request.Role
+                                Role = request.Role
 
                             });
-                            
+
 
                             _context.SaveChanges();
 
@@ -64,7 +64,7 @@ namespace Etar.Application.Services.Admins.User.Commands.AddNewAdmin
                     IsSuccess = false,
                     Message = "نام کاربری قبلا استقاده شده است"
                 };
-                
+
             }
 
             return new Result()

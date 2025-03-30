@@ -31,7 +31,7 @@
         <img src="~/assets/img/breadcrumb/br-shape-2.webp" alt="Image" class="br-shape-two position-absolute sm-none moveHorizontal">
         <img src="~/assets/img/breadcrumb/br-shape-3.webp" alt="Image" class="br-shape-three position-absolute top-0 end-0 h-100">
         <div class="container text-center ps-xxl-4">
-            <h2 class="br-title text-white">صفحه اصلی</h2>
+            <h2 class="br-title text-white">مدیریت ادمین ها</h2>
             <ul class="br-menu list-unstyle">
                 <li class="fs-xxl-20">رستوران ایتار</li>
                 <li class="fs-xxl-20"><a asp-area="Owner" asp-controller="Home" asp-action="Index" >صفحه اصلی</a></li>
@@ -49,7 +49,7 @@
                     <h3 class="fs-26"></h3>
                     <h3 style="color: wheat">لیست ادمین ها</h3>
                     <p style="color: white" class="fw-bold">لیست ادمین هارا مشاهده و سفارشات  آنها را برسی کنید</p>
-                    <a asp-controller="Order" asp-action="Index" class="link style-one fw-bold fs-xxl-18" style="font-size: var(--fontSize);">ورود به صفحه</a><br>
+                    <a asp-area="Owner" asp-controller="Admin" asp-action="Admins" class="link style-one fw-bold fs-xxl-18" style="font-size: var(--fontSize);">ورود به صفحه</a><br>
                 </div>
                 <div class="feature-card position-relative mb-30" data-cue="slideInUp" data-show="true" style="animation-name: slideInUp; animation-duration: 600ms; animation-timing-function: ease; animation-delay: 180ms; animation-direction: normal; animation-fill-mode: both;">
                     <div class="feature-icon">

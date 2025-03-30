@@ -25,7 +25,7 @@ namespace Etar.Application.Services.Admins.Cart.Commands.ConfirmCart
                 foundedCart.IsFinished = true;
                 _context.SaveChanges();
 
-                Result res = _orderService.AddOrderService.Execute(cartId, EOrderUser.Admin);
+                Result res = _orderService.AddOrderService.Execute(cartId);
 
                 return new Result()
                 {

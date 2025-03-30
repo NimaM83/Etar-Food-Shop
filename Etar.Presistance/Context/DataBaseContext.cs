@@ -27,7 +27,7 @@ namespace Etar.Presistance.Context
         public DbSet<Table> tables { get; set; }
         public DbSet<AdminCart> adminCarts { get; set; }
         public DbSet<AdminCartItem> adminCartItems { get; set; }
-        public DbSet<Order> orders { get; set; }
+        public DbSet<AdminOrder> adminOrders { get; set; }
 
     }
 }

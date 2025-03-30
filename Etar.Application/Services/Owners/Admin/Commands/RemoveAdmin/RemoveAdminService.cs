@@ -1,7 +1,7 @@
 ﻿using Etar.Application.Interfaces.Context;
 using Etar.Domain.Entities;
 
-namespace Etar.Application.Services.Admins.User.Commands.RemoveAdmin
+namespace Etar.Application.Services.Owners.Admin.Commands.RemoveAdmin
 {
     public class RemoveAdminService : IRemoveAdminService
     {

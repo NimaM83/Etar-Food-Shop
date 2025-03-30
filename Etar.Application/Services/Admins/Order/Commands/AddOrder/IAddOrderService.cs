@@ -12,6 +12,6 @@ namespace Etar.Application.Services.Admins.Order.Commands.AddOrder
 {
     public interface IAddOrderService
     {
-        Result Execute (Guid cartId, EOrderUser user);
+        Result Execute (Guid cartId);
     }
 }

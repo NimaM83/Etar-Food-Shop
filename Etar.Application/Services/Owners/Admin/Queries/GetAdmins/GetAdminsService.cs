@@ -1,7 +1,7 @@
 ﻿using Etar.Application.Interfaces.Context;
 using Etar.Domain.Entities;
 
-namespace Etar.Application.Services.Admins.User.Queries.GetAdmins
+namespace Etar.Application.Services.Owners.Admin.Queries.GetAdmins
 {
     public class GetAdminsService : IGetAdminsService
     {
@@ -16,10 +16,10 @@ namespace Etar.Application.Services.Admins.User.Queries.GetAdmins
         {
             var foundedAdmins = _context.admins.ToList();
 
-            if(foundedAdmins.Count() > 0)
+            if (foundedAdmins.Count() > 0)
             {
                 List<ResAllAdminsDto> admins = new List<ResAllAdminsDto>();
-                foreach(var  item in foundedAdmins)
+                foreach (var item in foundedAdmins)
                 {
                     admins.Add(new ResAllAdminsDto()
                     {

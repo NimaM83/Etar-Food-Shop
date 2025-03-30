@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Etar.Application.Services.Admins.User.Queries.GetAdmins
+namespace Etar.Application.Services.Owners.Admin.Queries.GetAdmins
 {
     public interface IGetAdminsService
     {

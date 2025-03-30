@@ -1,6 +1,8 @@
 using Etar.Application.Interfaces.Context;
 using Etar.Application.Interfaces.Services.Admin;
+using Etar.Application.Interfaces.Services.Owner;
 using Etar.Application.Services.Admins;
+using Etar.Application.Services.Owners;
 using Etar.Presistance.Context;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
@@ -14,6 +16,7 @@ builder.Services.AddMvc();
 builder.Services.AddControllersWithViews(optins => optins.EnableEndpointRouting = false);
 builder.Services.AddScoped<IDataBaseContext, DataBaseContext>();
 builder.Services.AddScoped<IAdminServices, AdminServices>();
+builder.Services.AddScoped<IOwnerServices, OwnerServices>();
 builder.Services.AddDbContext<DataBaseContext>(options => options.UseSqlServer(connectionStr));
 
 builder.Services.AddAuthentication(options =>

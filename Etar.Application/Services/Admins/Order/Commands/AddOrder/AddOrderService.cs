@@ -12,21 +12,20 @@ namespace Etar.Application.Services.Admins.Order.Commands.AddOrder
             _context = context;
         }
 
-        public Result Execute(Guid cartId, EOrderUser user)
+        public Result Execute(Guid cartId)
         {
-            if (user == EOrderUser.Admin)
-            {
+           
                 var foundedCart = _context.adminCarts.Where(c => c.Id == cartId)
                                   .FirstOrDefault();
 
                 if (foundedCart != null)
                 {
-                    _context.orders.Add(new Domain.Entities.Orders.Order()
+                    _context.adminOrders.Add(new Domain.Entities.Orders.AdminOrder()
                     {
                         CartId = cartId,
-                        UserId = foundedCart.AdminId,
+                        AdminId = foundedCart.AdminId,
                         TotalPrice = foundedCart.TotalPrice,
-                        User = EOrderUser.Admin,
+                        RegisterTime = DateTime.Now
                     });
                     _context.SaveChanges();
 
@@ -43,7 +42,7 @@ namespace Etar.Application.Services.Admins.Order.Commands.AddOrder
                     IsSuccess = false,
                     Message = "سبدی یافت نشد"
                 };
-            }
+            
 
             //first implement the clients cart 
             return null;

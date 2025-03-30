@@ -23,7 +23,7 @@ namespace Etar.Application.Interfaces.Context
         DbSet<Table> tables { get; set; }
         DbSet<AdminCart> adminCarts { get; set; }
         DbSet<AdminCartItem> adminCartItems { get; set; }
-        DbSet<Order> orders { get; set; }
+        DbSet<AdminOrder> adminOrders { get; set; }
 
         int SaveChanges(bool acceptAllChangesOnSuccess);
         int SaveChanges();
