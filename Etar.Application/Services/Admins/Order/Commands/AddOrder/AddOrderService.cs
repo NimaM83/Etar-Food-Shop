@@ -23,7 +23,6 @@ namespace Etar.Application.Services.Admins.Order.Commands.AddOrder
                     _context.adminOrders.Add(new Domain.Entities.Orders.AdminOrder()
                     {
                         CartId = cartId,
-                        AdminId = foundedCart.AdminId,
                         TotalPrice = foundedCart.TotalPrice,
                         RegisterTime = DateTime.Now
                     });

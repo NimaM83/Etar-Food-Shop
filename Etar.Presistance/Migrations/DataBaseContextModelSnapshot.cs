@@ -158,7 +158,7 @@ namespace Etar.Presistance.Migrations
                     b.ToTable("foodCategories");
                 });
 
-            modelBuilder.Entity("Etar.Domain.Entities.Orders.Order", b =>
+            modelBuilder.Entity("Etar.Domain.Entities.Orders.AdminOrder", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -167,18 +167,17 @@ namespace Etar.Presistance.Migrations
                     b.Property<Guid>("CartId")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<DateTime>("RegisterTime")
+                        .HasColumnType("datetime2");
+
                     b.Property<double>("TotalPrice")
                         .HasColumnType("float");
 
-                    b.Property<int>("User")
-                        .HasColumnType("int");
-
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.HasKey("Id");
 
-                    b.ToTable("orders");
+                    b.HasIndex("CartId");
+
+                    b.ToTable("adminOrders");
                 });
 
             modelBuilder.Entity("Etar.Domain.Entities.Table.Table", b =>
@@ -315,6 +314,17 @@ namespace Etar.Presistance.Migrations
                         .IsRequired();
 
                     b.Navigation("Category");
+                });
+
+            modelBuilder.Entity("Etar.Domain.Entities.Orders.AdminOrder", b =>
+                {
+                    b.HasOne("Etar.Domain.Entities.Carts.AdminCart", "Cart")
+                        .WithMany()
+                        .HasForeignKey("CartId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Cart");
                 });
 
             modelBuilder.Entity("Etar.Domain.Entities.Carts.AdminCart", b =>

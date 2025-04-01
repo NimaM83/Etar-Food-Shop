@@ -1,5 +1,6 @@
 ﻿using Etar.Application.Interfaces.Context;
 using Etar.Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace Etar.Application.Services.Owners.Admin.Queries.GetAdminOrders
 {
@@ -14,7 +15,8 @@ namespace Etar.Application.Services.Owners.Admin.Queries.GetAdminOrders
 
         public Result<List<ResGetAdminOrdersDto>> Execute(Guid adminId)
         {
-            var foundedOrders = _context.adminOrders.Where(o => o.AdminId == adminId)
+            var foundedOrders = _context.adminOrders.Include(o => o.Cart)
+                                .Where(o => o.Cart.AdminId == adminId)
                                 .ToList();
 
             if(foundedOrders.Any())
