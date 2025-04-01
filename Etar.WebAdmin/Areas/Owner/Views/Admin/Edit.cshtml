@@ -1,29 +1,28 @@
-﻿
-@using Etar.Application.Services.Owners.Admin.Commands.AddNewAdmin
+﻿@using Etar.Application.Services.Owners.Admin.Commands.EditAdmin
 @using Etar.Domain.Entities
-@model ReqAddNewAdminDto
+@model ReqEditAdminDto
 @{
 
 }
 <head>
-    
-        <!-- Required meta tags -->
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        
-        <!-- Link of CSS files -->
-        <link rel="stylesheet" href="~/assets/css/bootstrap.min.css">
-        <link rel="stylesheet" href="~/assets/css/swiper.bundle.min.css">
-        <link rel="stylesheet" href="~/assets/css/scrollcue.min.css">
-        <link rel="stylesheet" href="~/assets/css/remixicon.css">
-        <link rel="stylesheet" href="~/assets/css/header.css">
-        <link rel="stylesheet" href="~/assets/css/style.css">
-        <link rel="stylesheet" href="~/assets/css/footer.css">
-        <link rel="stylesheet" href="~/assets/css/responsive.css">
-        <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css">
 
-        <title>ثبت نام ادمین</title>
-        <link rel="icon" type="image/png" href="~/assets/img/favicon.webp">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Link of CSS files -->
+    <link rel="stylesheet" href="~/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/assets/css/swiper.bundle.min.css">
+    <link rel="stylesheet" href="~/assets/css/scrollcue.min.css">
+    <link rel="stylesheet" href="~/assets/css/remixicon.css">
+    <link rel="stylesheet" href="~/assets/css/header.css">
+    <link rel="stylesheet" href="~/assets/css/style.css">
+    <link rel="stylesheet" href="~/assets/css/footer.css">
+    <link rel="stylesheet" href="~/assets/css/responsive.css">
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css">
+
+    <title>ویرایش ادمین</title>
+    <link rel="icon" type="image/png" href="~/assets/img/favicon.webp">
 </head>
 
 <body class="bg-bunk loaded">
@@ -35,15 +34,13 @@
         <div class="loader-section section-right"></div>
     </div>
     <!--  Preloader End -->
-
-
     <!-- Breadcrumb Section Start -->
     <div class="breadcrumb-wrap bg-mild position-relative">
         <img src="~/assets/img/breadcrumb/br-shape-1.webp" alt="Image" class="br-shape-one position-absolute sm-none bounce">
         <img src="~/assets/img/breadcrumb/br-shape-2.webp" alt="Image" class="br-shape-two position-absolute sm-none moveHorizontal">
         <img src="~/assets/img/breadcrumb/br-shape-3.webp" alt="Image" class="br-shape-three position-absolute top-0 end-0 h-100">
         <div class="container text-center ps-xxl-4">
-            <h2 class="br-title text-white">ثبت نام ادمین جدید</h2>
+            <h2 class="br-title text-white"> ویرایش ادمین </h2>
             <ul class="br-menu list-unstyle">
                 <li class="fs-xxl-20">رستوران ایتار</li>
             </ul>
@@ -54,9 +51,9 @@
     <div class="container style-two ptb-130">
         <div class="checkout-wrap">
 
-            
+
             <form asp-action="Register" method="post" class="checkout-form">
-                <h3 class="checkout-box-title fs-26 text-white fw-medium">فرم ثبت نام</h3>
+                <h3 class="checkout-box-title fs-26 text-white fw-medium">فرم ویرایش</h3>
                 <p>
                     دقت داشته باشید که نام کاربری 5 و رمز عبور <br /> باید حداقل 8 کارکتر داشته باشند
                 </p>
@@ -64,7 +61,7 @@
 
                     <div class="col-lg-6 col-md-6">
                         <div class="form-group">
-                            <label  class="fw-bold text-white d-block mb-10">نام کاربری</label>
+                            <label class="fw-bold text-white d-block mb-10">نام کاربری</label>
                             <input required type="text" asp-for="@Model.UserName" class="bg-mild text-white h-49 w-100 border-0">
                         </div>
                     </div>
@@ -73,7 +70,7 @@
 
                     <div class="col-lg-3 col-md-6">
                         <div class="form-group">
-                            <label  class="fw-bold text-white d-block mb-10">رمز عبور</label>
+                            <label class="fw-bold text-white d-block mb-10">رمز عبور</label>
                             <input required type="text" asp-for="@Model.Password" class="bg-mild text-white h-49 w-100 border-0" required="">
                         </div>
                     </div>
@@ -88,14 +85,14 @@
                         <div class="form-group">
                             <label class="fw-bold text-white d-block mb-10">نقش</label>
                             <select asp-for="@Model.Role" class="bg-mild text-white h-49 w-100 border-0">
-                                
-                                    <option value="1">مدیر</option>
-                                    <option value="0">ادمین</option>
-                                
+
+                                <option value="1">مدیر</option>
+                                <option value="0">ادمین</option>
+
                             </select>
                         </div>
                     </div>
-                   
+
                 </div>
 
                 <button type="submit" class="btn style-one">تأیید</button>
@@ -104,7 +101,6 @@
         </div>
     </div>
     <!-- Checkout section end -->
-
     <!-- Link of JS files -->
     <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
     <script src="~/assets/js/bootstrap.bundle.min.js"></script>

@@ -7,18 +7,21 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="Areas\Owner\Views\Admin\Edit.cshtml" />
     <Content Remove="wwwroot\assets\img\icons\category.svg" />
     <Content Remove="wwwroot\assets\img\icons\Order.svg" />
     <Content Remove="wwwroot\assets\img\icons\Report.svg" />
   </ItemGroup>
 
   <ItemGroup>
+    <_ContentIncludedByDefault Remove="Areas\Owner\Views\Admin\Edit.cshtml" />
     <_ContentIncludedByDefault Remove="wwwroot\assets\img\icons\category.svg" />
     <_ContentIncludedByDefault Remove="wwwroot\assets\img\icons\Order.svg" />
     <_ContentIncludedByDefault Remove="wwwroot\assets\img\icons\Report.svg" />
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="Areas\Owner\Views\Admin\Edit.cshtml" />
     <None Include="wwwroot\assets\img\icons\category.svg" />
     <None Include="wwwroot\assets\img\icons\Order.svg" />
     <None Include="wwwroot\assets\img\icons\Report.svg" />
@@ -44,6 +47,10 @@
   <ItemGroup>
     <Folder Include="Areas\Owner\Views\Shared\" />
     <Folder Include="Views\Users\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Areas\Owner\Views\Admin\Edit.cshtml" />
   </ItemGroup>
 
 </Project>
