@@ -52,35 +52,38 @@
         <div class="checkout-wrap">
 
 
-            <form asp-action="Register" method="post" class="checkout-form">
+            <form asp-action="Edit" method="post" class="checkout-form">
                 <h3 class="checkout-box-title fs-26 text-white fw-medium">فرم ویرایش</h3>
                 <p>
                     دقت داشته باشید که نام کاربری 5 و رمز عبور <br /> باید حداقل 8 کارکتر داشته باشند
                 </p>
                 <div class="row">
+                    <input hidden asp-for="@Model.Id" value="@Model.Id" />
 
                     <div class="col-lg-6 col-md-6">
                         <div class="form-group">
                             <label class="fw-bold text-white d-block mb-10">نام کاربری</label>
-                            <input required type="text" asp-for="@Model.UserName" class="bg-mild text-white h-49 w-100 border-0">
+                            <input required type="text" asp-for="@Model.UserName" value="@Model.UserName" class="bg-mild text-white h-49 w-100 border-0">
                         </div>
                     </div>
 
                     <br /> <br />
 
-                    <div class="col-lg-3 col-md-6">
+                    <div class="col-lg-3 col-md-3">
                         <div class="form-group">
                             <label class="fw-bold text-white d-block mb-10">رمز عبور</label>
-                            <input required type="text" asp-for="@Model.Password" class="bg-mild text-white h-49 w-100 border-0" required="">
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="form-group">
-                            <label class="fw-bold text-white d-block mb-10">تکرار رمز عبور</label>
-                            <input required type="text" asp-for="@Model.RePassword" class="bg-mild text-white h-49 w-100 border-0" required="">
+                            <input required type="text" asp-for="@Model.Password" class="bg-mild text-white h-49 w-100 border-0">
                         </div>
                     </div>
 
+                    <div class="col-lg-3 col-md-3">
+                        <div class="form-group">
+                            <label class="fw-bold text-white d-block mb-10">تکرار رمز عبور</label>
+                            <input required type="text" asp-for="@Model.RePassword" class="bg-mild text-white h-49 w-100 border-0">
+                        </div>
+                    </div>
+
+      
                     <div class="col-lg-6 col-md-6">
                         <div class="form-group">
                             <label class="fw-bold text-white d-block mb-10">نقش</label>

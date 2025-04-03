@@ -1,5 +1,6 @@
 ﻿@using Etar.Application.Services.Owners.Admin.Queries.GetAdmins
 @using Etar.Domain.Entities
+@using Etar.Domain.Entities.Users
 @model Result<List<ResAllAdminsDto>>
 @{
     Layout = null;
@@ -73,6 +74,8 @@
                         <thead>
                             <tr>
                                 <th scope="col" class="text-white f-secondary fs-xxl-18">نام کاربری</th>
+                                <th scope="col" class="text-white f-secondary fs-xxl-18">نقش</th>
+                                <th scope="col" class="text-white f-secondary fs-xxl-18">گزارش سفارشات</th>
                                 <th scope="col" class="text-white f-secondary fs-xxl-18"></th>
                             </tr>
                         </thead>
@@ -88,14 +91,38 @@
                                     </td>
 
                                     <td>
+                                        <h6 class="fs-18 text-white fw-bold">
+                                            @item.RoleString
+                                        </h6>
+                                    </td>
+
+                                    <td>
+                                        @if(item.Role == EAdminRoles.Admin)
+                                        {
+                                            <button class="btn btn-warning">
+                                                <a asp-action="Orders" asp-route-Id="@item.Id" style="color : white">
+                                                    سفارشات
+                                                </a>
+                                            </button>
+                                        }
+
+                                        else
+                                        {
+                                            <h6 class="fs-18 text-white fw-bold">
+                                                -
+                                            </h6>
+                                        }
+                                    </td>
+
+                                    <td>
                                         <button class="btn btn-primary">
-                                            <a>
+                                            <a asp-action="Edit" asp-route-Id="@item.Id" style="color : white">
                                                 ویرایش
                                             </a>
                                         </button>
 
                                         <button class="btn btn-danger" >
-                                            <a asp-action="Remove" asp-route-Id="@item.Id">
+                                            <a asp-action="Remove" asp-route-Id="@item.Id" style="color : white">
                                                 حذف
                                             </a>
                                         </button>

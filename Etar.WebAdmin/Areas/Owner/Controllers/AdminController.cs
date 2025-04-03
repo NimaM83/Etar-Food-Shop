@@ -36,15 +36,37 @@ namespace Etar.WebAdmin.Areas.Owner.Controllers
         }
 
         [HttpGet]
-        public IActionResult Edit()
+        public IActionResult Edit(Guid Id)
         {
-            return View();
+            var resGetAdminService = _services.AdminService.GetAdminService.Execute(Id);
+            if(!resGetAdminService.IsSuccess)
+            {
+                return Json(resGetAdminService);
+            }
+
+            ReqEditAdminDto request = new ReqEditAdminDto()
+            {
+                Id = resGetAdminService.Data.Id,
+                UserName = resGetAdminService.Data.UserName,
+                Role = resGetAdminService.Data.Role
+            };
+            return View(request);
         }
 
         [HttpPost]
         public IActionResult Edit(ReqEditAdminDto request)
         {
             return Json(_services.AdminService.EditAdminService.Execute(request));
+        }
+
+        public IActionResult Remove (Guid Id)
+        {
+            return Json(_services.AdminService.RemoveAdminService.Execute(Id));
+        }
+
+        public  IActionResult Orders (Guid Id)
+        {
+            return View(_services.AdminService.GetAdminOrdersService.Execute(Id));
         }
     }
 }

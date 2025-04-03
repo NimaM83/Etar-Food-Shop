@@ -28,7 +28,8 @@ namespace Etar.Application.Services.Owners.Admin.Queries.GetAdminOrders
                     {
                         Id = item.Id,
                         TotalPrice = item.TotalPrice,
-                        RegisterTime = item.RegisterTime.ToShortTimeString(),
+                        RegisterTime = item.RegisterTime.ToLongDateString() +" / "+
+                                       item.RegisterTime.ToShortTimeString(),
                     });
 
                 }

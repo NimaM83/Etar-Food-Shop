@@ -1,4 +1,5 @@
 ﻿using Etar.Application.Interfaces.Context;
+using Etar.Common;
 using Etar.Domain.Entities;
 
 namespace Etar.Application.Services.Owners.Admin.Commands.EditAdmin
@@ -17,16 +18,17 @@ namespace Etar.Application.Services.Owners.Admin.Commands.EditAdmin
             {
                 var foundedAdmin = _context.admins.Where(a => a.UserName == request.UserName).FirstOrDefault();
 
-                if(foundedAdmin == null)
+                if(foundedAdmin == null || foundedAdmin.Id == request.Id)
                 {
                     if(request.Password.Length >= 8)
                     {
                         if(request.Password.Equals(request.RePassword))
                         {
                             var admin = _context.admins.Find(request.Id);
+                            PasswordHasher hasher = new PasswordHasher();
 
                             admin.UserName = request.UserName;
-                            admin.Password = request.Password;
+                            admin.Password = hasher.HashPassword(request.Password);
                             admin.Role = request.Role;
                             _context.SaveChanges();
 

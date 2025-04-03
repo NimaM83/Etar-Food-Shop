@@ -2,6 +2,7 @@
 using Etar.Application.Services.Owners.Admin.Commands.AddNewAdmin;
 using Etar.Application.Services.Owners.Admin.Commands.EditAdmin;
 using Etar.Application.Services.Owners.Admin.Commands.RemoveAdmin;
+using Etar.Application.Services.Owners.Admin.Queries.GetAdmin;
 using Etar.Application.Services.Owners.Admin.Queries.GetAdminOrders;
 using Etar.Application.Services.Owners.Admin.Queries.GetAdmins;
 using System;
@@ -19,6 +20,7 @@ namespace Etar.Application.Services.Owners.Admin
         IGetAdminsService GetAdminsService { get; }
         IGetAdminOrdersService GetAdminOrdersService { get; }
         IEditAdminService EditAdminService { get; }
+        IGetAdminService GetAdminService { get; }
     }
 
 
@@ -73,6 +75,15 @@ namespace Etar.Application.Services.Owners.Admin
             get
             {
                 return _editAdmin = _editAdmin ?? new EditAdminService(_context);
+            }
+        }
+
+        private IGetAdminService _getAdmin;
+        public IGetAdminService GetAdminService
+        {
+            get
+            {
+                return _getAdmin = _getAdmin ?? new GetAdminService(_context);
             }
         }
     }

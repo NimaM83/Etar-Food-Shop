@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Etar.Presistance.Migrations
 {
     [DbContext(typeof(DataBaseContext))]
-    [Migration("20250311152557_TableMig")]
-    partial class TableMig
+    [Migration("20250403101832_initialMig")]
+    partial class initialMig
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -53,6 +53,58 @@ namespace Etar.Presistance.Migrations
                     b.HasIndex("ClientId");
 
                     b.ToTable("addresses");
+                });
+
+            modelBuilder.Entity("Etar.Domain.Entities.Carts.AdminCart", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("AdminId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("IsFinished")
+                        .HasColumnType("bit");
+
+                    b.Property<double>("TotalPrice")
+                        .HasColumnType("float");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AdminId");
+
+                    b.ToTable("adminCarts");
+                });
+
+            modelBuilder.Entity("Etar.Domain.Entities.Carts.AdminCartItem", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("CartId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("FoodId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<double>("PriceForCount")
+                        .HasColumnType("float");
+
+                    b.Property<double>("PriceForOne")
+                        .HasColumnType("float");
+
+                    b.Property<int>("count")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CartId");
+
+                    b.HasIndex("FoodId");
+
+                    b.ToTable("adminCartItems");
                 });
 
             modelBuilder.Entity("Etar.Domain.Entities.Foods.Food", b =>
@@ -109,6 +161,28 @@ namespace Etar.Presistance.Migrations
                     b.ToTable("foodCategories");
                 });
 
+            modelBuilder.Entity("Etar.Domain.Entities.Orders.AdminOrder", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("CartId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("RegisterTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<double>("TotalPrice")
+                        .HasColumnType("float");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CartId");
+
+                    b.ToTable("adminOrders");
+                });
+
             modelBuilder.Entity("Etar.Domain.Entities.Table.Table", b =>
                 {
                     b.Property<Guid>("Id")
@@ -144,6 +218,9 @@ namespace Etar.Presistance.Migrations
                     b.Property<string>("Password")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Role")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("UpdateTime")
                         .HasColumnType("datetime2");
@@ -201,6 +278,36 @@ namespace Etar.Presistance.Migrations
                     b.Navigation("Client");
                 });
 
+            modelBuilder.Entity("Etar.Domain.Entities.Carts.AdminCart", b =>
+                {
+                    b.HasOne("Etar.Domain.Entities.Users.Admin", "Admin")
+                        .WithMany()
+                        .HasForeignKey("AdminId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Admin");
+                });
+
+            modelBuilder.Entity("Etar.Domain.Entities.Carts.AdminCartItem", b =>
+                {
+                    b.HasOne("Etar.Domain.Entities.Carts.AdminCart", "Cart")
+                        .WithMany("Items")
+                        .HasForeignKey("CartId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Etar.Domain.Entities.Foods.Food", "Food")
+                        .WithMany()
+                        .HasForeignKey("FoodId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Cart");
+
+                    b.Navigation("Food");
+                });
+
             modelBuilder.Entity("Etar.Domain.Entities.Foods.Food", b =>
                 {
                     b.HasOne("Etar.Domain.Entities.Foods.FoodCategory", "Category")
@@ -210,6 +317,22 @@ namespace Etar.Presistance.Migrations
                         .IsRequired();
 
                     b.Navigation("Category");
+                });
+
+            modelBuilder.Entity("Etar.Domain.Entities.Orders.AdminOrder", b =>
+                {
+                    b.HasOne("Etar.Domain.Entities.Carts.AdminCart", "Cart")
+                        .WithMany()
+                        .HasForeignKey("CartId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Cart");
+                });
+
+            modelBuilder.Entity("Etar.Domain.Entities.Carts.AdminCart", b =>
+                {
+                    b.Navigation("Items");
                 });
 
             modelBuilder.Entity("Etar.Domain.Entities.Users.Client", b =>

@@ -24,7 +24,9 @@ namespace Etar.Application.Services.Owners.Admin.Queries.GetAdmins
                     admins.Add(new ResAllAdminsDto()
                     {
                         Id = item.Id,
-                        UserName = item.UserName
+                        UserName = item.UserName,
+                        RoleString = (item.Role == 0) ? "ادمین" : "مدیر",
+                        Role = item.Role
                     });
                 }
 
