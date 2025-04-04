@@ -68,5 +68,10 @@ namespace Etar.WebAdmin.Areas.Owner.Controllers
         {
             return View(_services.AdminService.GetAdminOrdersService.Execute(Id));
         }
+
+        public IActionResult OrderDetails(Guid Id)
+        {
+            return View(_services.AdminService.GetAdminOrderDetailsService.Execute(Id));
+        }
     }
 }

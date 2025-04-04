@@ -44,7 +44,8 @@ namespace Etar.Application.Services.Owners.Admin.Queries.GetAdminOrderDetails
                         TotalPrice = foundedOrder.TotalPrice,
                         AdminName = foundedOrder.Cart.Admin.UserName,
                         RegisterTime = foundedOrder.RegisterTime.ToLongDateString() + " / "
-                                       + foundedOrder.RegisterTime.ToShortTimeString,
+                                       + foundedOrder.RegisterTime.ToShortTimeString(),
+                        Items =  items,
                     },
 
                     IsSuccess = true,
