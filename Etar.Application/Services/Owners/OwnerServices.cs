@@ -1,5 +1,6 @@
 ﻿using Etar.Application.Interfaces.Context;
 using Etar.Application.Interfaces.Services.Owner;
+using Etar.Application.Services.Admins.User;
 using Etar.Application.Services.Owners.Admin;
 using System;
 using System.Collections.Generic;
@@ -23,6 +24,15 @@ namespace Etar.Application.Services.Owners
             get
             {
                 return _adminService = _adminService ?? new AdminService(_context);
+            }
+        }
+
+        private IUserService _userService;
+        public IUserService UserService
+        {
+            get 
+            {
+                return  _userService = _userService ?? new UserService(_context);
             }
         }
     }
