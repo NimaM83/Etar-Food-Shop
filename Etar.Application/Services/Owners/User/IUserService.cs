@@ -1,4 +1,5 @@
 ﻿using Etar.Application.Interfaces.Context;
+using Etar.Application.Services.Owners.User.Commands.ChangePass;
 using Etar.Application.Services.Owners.User.Commands.EditUser;
 using Etar.Application.Services.Owners.User.Queries.GetUser;
 using System;
@@ -13,6 +14,7 @@ namespace Etar.Application.Services.Owners.User
     {
         IGetUserService GetUserService { get; }
         IEditUserService EditUserService { get; }
+        IChangePassService ChangePassService { get; }
     }
 
     public class UserService : IUserService
@@ -38,6 +40,15 @@ namespace Etar.Application.Services.Owners.User
             get
             {
                 return _editUser = _editUser ?? new EditUserService(_context);
+            }
+        }
+
+        private IChangePassService _changePass;
+        public IChangePassService ChangePassService
+        {
+            get
+            {
+                return _changePass = _changePass ?? new ChangePassService(_context);
             }
         }
     }
