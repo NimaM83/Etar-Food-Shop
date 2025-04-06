@@ -1,4 +1,5 @@
 ﻿using Etar.Application.Interfaces.Context;
+using Etar.Application.Services.Owners.Order.Queries.GetOrderDetails;
 using Etar.Application.Services.Owners.Order.Queries.GetOrders;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,7 @@ namespace Etar.Application.Services.Owners.Order
     public interface IOrderService
     {
         IGetOrdersService GetOrdersService { get; }
+        IGetOrderDetailsService GetOrderDetailsService { get; }
     }
 
     public class OrderService : IOrderService
@@ -27,6 +29,15 @@ namespace Etar.Application.Services.Owners.Order
             get
             {
                 return _ordersService = _ordersService ?? new GetOrdersService(_context);
+            }
+        }
+
+        private IGetOrderDetailsService _orderDetailsService;
+        public IGetOrderDetailsService GetOrderDetailsService
+        {
+            get
+            {
+               return _orderDetailsService = _orderDetailsService ?? new GetOrderDetailsService(_context);
             }
         }
     }
