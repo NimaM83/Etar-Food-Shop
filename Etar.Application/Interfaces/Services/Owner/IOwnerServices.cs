@@ -11,6 +11,6 @@ namespace Etar.Application.Interfaces.Services.Owner
     public interface IOwnerServices
     {
         IAdminService AdminService { get; }
-        IUserService UserService { get; }
+        Application.Services.Owners.User.IUserService UserService { get; }
     }
 }

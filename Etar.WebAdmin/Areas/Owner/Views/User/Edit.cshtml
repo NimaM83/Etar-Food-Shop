@@ -1,11 +1,11 @@
-﻿@using Etar.Application.Services.Owners.User.Queries.GetUser
+﻿@using Etar.Application.Services.Owners.User.Commands.EditUser
 @using Etar.Domain.Entities
+@model ReqEditUserDto
+@{
 
-@model Result<ResGetUserDto>
-
-<html lang="zxx" class="theme-dark">
-<!-- Mirrored from templates.hibotheme.com/etar/default/shop-details.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 21 Mar 2024 22:14:29 GMT -->
+}
 <head>
+
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -21,9 +21,10 @@
     <link rel="stylesheet" href="~/assets/css/responsive.css">
     <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css">
 
-    <title>ایتار-حساب کاربری</title>
+    <title>ویرایش حساب کاربری</title>
     <link rel="icon" type="image/png" href="~/assets/img/favicon.webp">
 </head>
+
 <body class="bg-bunk loaded">
 
     <!--  Preloader Start -->
@@ -39,62 +40,41 @@
         <img src="~/assets/img/breadcrumb/br-shape-2.webp" alt="Image" class="br-shape-two position-absolute sm-none moveHorizontal">
         <img src="~/assets/img/breadcrumb/br-shape-3.webp" alt="Image" class="br-shape-three position-absolute top-0 end-0 h-100">
         <div class="container text-center ps-xxl-4">
-            <h2 class="br-title text-white">حساب کاربری</h2>
+            <h2 class="br-title text-white"> ویرایش حساب </h2>
             <ul class="br-menu list-unstyle">
                 <li class="fs-xxl-20">رستوران ایتار</li>
             </ul>
         </div>
     </div>
     <!-- Breadcrumb Section End -->
-    <!-- جزئیات فروشگاه section Start -->
-    <div class="shop-wrap position-relative index-1">
-        @if (Model.IsSuccess)
-        {
-            @* <img src="~/assets/img/shape-17.webp" alt="Image" class="shop-section-shape position-absolute end-0 sm-none bounce"> *@
-            <div class="container ptb-130">
-                <div class="row align-items-center pb-100">
-                    @* <div class="col-lg-6">
-                <div class="single-shop-img round-10">
-                <img src="~/assets/img/shop/single-shop.webp" alt="Image" class="round-10">
-                </div>
-                </div> *@
-                    <div class="col-xxl-5 col-lg-6 pe-xxl-5">
-                        <div class="shop-details-wrap">
-                            <h2 class="fs-32 text-optional">@Model.Data.UserName</h2>
+    <!-- Checkout section start -->
+    <div class="container style-two ptb-130">
+        <div class="checkout-wrap">
 
 
-                            <h4 class="price-tag fs-24 f-primary">@Model.Data.Role نقش</h4>
+            <form asp-action="Edit" method="post" class="checkout-form">
+                <h3 class="checkout-box-title fs-26 text-white fw-medium">فرم ویرایش</h3>
+                <p>
+                     دقت داشته باشید که نام کاربری باید حداقل 5 کارکتر داشته باشد
+                </p>
+                <div class="row">
+                    <input hidden asp-for="@Model.Id" value="@Model.Id" />
 
+                    <div class="col-lg-6 col-md-6">
+                        <div class="form-group">
+                            <label class="fw-bold text-white d-block mb-10">نام کاربری</label>
+                            <input required type="text" asp-for="@Model.UserName" value="@Model.UserName" class="bg-mild text-white h-49 w-100 border-0">
                         </div>
                     </div>
+
                 </div>
 
-                <button class="btn btn-primary">
-                    <a asp-action="Edit" asp-route-id="@Model.Data.Id" style="color: white">
-                        ویرایش
-                    </a>
-                </button>
-                <button class="btn btn-danger">
-                    <a asp-action="ChangePass" asp-route-id="@Model.Data.Id" style="color: white">
-                        تغییر رمز عبور
-                    </a>
-                </button>
-            </div>
-        }
-        else
-        {
-            <h3 class="text-danger">
-                @Model.Message
-            </h3>
-        }
+                <button type="submit" class="btn style-one">تأیید</button>
+            </form>
 
+        </div>
     </div>
-    <!-- جزئیات فروشگاه section End -->
-    <!-- Back to Top -->
-    <button type="button" id="backtotop" class="position-fixed text-center border-0 p-0" style="opacity: 0;">
-        <i class="ri-arrow-up-line"></i>
-    </button>
-
+    <!-- Checkout section end -->
     <!-- Link of JS files -->
     <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
     <script src="~/assets/js/bootstrap.bundle.min.js"></script>
@@ -105,5 +85,4 @@
 
 
 
-</body><!-- Mirrored from templates.hibotheme.com/etar/default/shop-details.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 21 Mar 2024 22:14:29 GMT -->
-</html>
+</body>

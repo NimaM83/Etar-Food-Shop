@@ -17,9 +17,9 @@ namespace Etar.Application.Services.Owners.User.Commands.EditUser
 
             if(foundedUser != null)
             {
-                if(foundedUser.UserName.Length >= 5)
+                if(request.UserName.Length >= 5)
                 {
-                    bool isValid  = !(_context.admins.Where(a => a.UserName.Equals(foundedUser.UserName))
+                    bool isValid  = !(_context.admins.Where(a => a.UserName.Equals(request.UserName))
                                     .Any());
 
                     if(isValid)

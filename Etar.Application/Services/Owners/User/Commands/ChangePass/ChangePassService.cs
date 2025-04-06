@@ -30,6 +30,12 @@ namespace Etar.Application.Services.Owners.User.Commands.ChangePass
                             foundedUser.Password = hasher.HashPassword(request.NewPassword);
                             _context.SaveChanges();
                         }
+
+                        return new Result()
+                        {
+                            IsSuccess = false,
+                            Message = "تکرار رمز عبور به درتی وارد نشده است"
+                        };
                     }
 
                     return new Result()

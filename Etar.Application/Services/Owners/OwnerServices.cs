@@ -1,7 +1,8 @@
 ﻿using Etar.Application.Interfaces.Context;
 using Etar.Application.Interfaces.Services.Owner;
-using Etar.Application.Services.Admins.User;
+
 using Etar.Application.Services.Owners.Admin;
+using Etar.Application.Services.Owners.User;
 using System;
 using System.Collections.Generic;
 using System.Linq;
