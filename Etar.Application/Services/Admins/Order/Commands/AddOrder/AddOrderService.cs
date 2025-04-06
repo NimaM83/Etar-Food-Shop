@@ -42,9 +42,6 @@ namespace Etar.Application.Services.Admins.Order.Commands.AddOrder
                     Message = "سبدی یافت نشد"
                 };
             
-
-            //first implement the clients cart 
-            return null;
         }
     }
 }

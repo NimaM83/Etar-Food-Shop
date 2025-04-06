@@ -2,6 +2,7 @@
 using Etar.Application.Interfaces.Services.Owner;
 
 using Etar.Application.Services.Owners.Admin;
+using Etar.Application.Services.Owners.Order;
 using Etar.Application.Services.Owners.User;
 using System;
 using System.Collections.Generic;
@@ -34,6 +35,15 @@ namespace Etar.Application.Services.Owners
             get 
             {
                 return  _userService = _userService ?? new UserService(_context);
+            }
+        }
+
+        private IOrderService _orderService;
+        public IOrderService OrderService
+        {
+            get 
+            {
+                return _orderService = _orderService ?? new OrderService(_context);
             }
         }
     }
