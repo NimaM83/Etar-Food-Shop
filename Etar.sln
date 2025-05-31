@@ -17,17 +17,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastru
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{634FF8BE-5068-4CF4-A3D2-694C9738E5F2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Etar.Common", "Etar.Common\Etar.Common.csproj", "{5431E162-0C52-422E-AA75-48531C76BE45}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Etar.Common", "Etar.Common\Etar.Common.csproj", "{5431E162-0C52-422E-AA75-48531C76BE45}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Etar.Application", "Etar.Application\Etar.Application.csproj", "{05DDA567-DC9D-4932-87C4-483FBDC94424}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Etar.Application", "Etar.Application\Etar.Application.csproj", "{05DDA567-DC9D-4932-87C4-483FBDC94424}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Etar.Domain", "Etar.Domain\Etar.Domain.csproj", "{33BA8871-B99A-4206-A376-B8F7702481C1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Etar.Domain", "Etar.Domain\Etar.Domain.csproj", "{33BA8871-B99A-4206-A376-B8F7702481C1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Etar.Presistance", "Etar.Presistance\Etar.Presistance.csproj", "{954E37DD-0D31-4937-B39D-37808673BFD9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Etar.Presistance", "Etar.Presistance\Etar.Presistance.csproj", "{954E37DD-0D31-4937-B39D-37808673BFD9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Etar.WebAdmin", "Etar.WebAdmin\Etar.WebAdmin.csproj", "{4430A180-F1AA-4E5E-8F14-94E35B3549B4}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Etar.WebClient", "Etar.WebClient\Etar.WebClient.csproj", "{8D2670A1-5F63-42B5-9122-6C5371E04BDE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Etar.WebAdmin", "Etar.WebAdmin\Etar.WebAdmin.csproj", "{4430A180-F1AA-4E5E-8F14-94E35B3549B4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -55,10 +53,6 @@ Global
 		{4430A180-F1AA-4E5E-8F14-94E35B3549B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4430A180-F1AA-4E5E-8F14-94E35B3549B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4430A180-F1AA-4E5E-8F14-94E35B3549B4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8D2670A1-5F63-42B5-9122-6C5371E04BDE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8D2670A1-5F63-42B5-9122-6C5371E04BDE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8D2670A1-5F63-42B5-9122-6C5371E04BDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8D2670A1-5F63-42B5-9122-6C5371E04BDE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -73,7 +67,6 @@ Global
 		{33BA8871-B99A-4206-A376-B8F7702481C1} = {B592936E-3DE4-4E2F-B8A3-BB7B1C1FFC9E}
 		{954E37DD-0D31-4937-B39D-37808673BFD9} = {062840F2-EB8F-46A1-B9CB-1AAA73A4BF9C}
 		{4430A180-F1AA-4E5E-8F14-94E35B3549B4} = {634FF8BE-5068-4CF4-A3D2-694C9738E5F2}
-		{8D2670A1-5F63-42B5-9122-6C5371E04BDE} = {634FF8BE-5068-4CF4-A3D2-694C9738E5F2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {16FF3F4A-C672-47C6-9BE9-FF72ECC5F49B}
