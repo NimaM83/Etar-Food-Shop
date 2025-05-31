@@ -1,5 +1,6 @@
 ﻿using Etar.Application.Interfaces.Services.Admin;
 using Etar.Application.Services.Admins.Table.Commands.AddTable;
+using Etar.Application.Services.Admins.Table.Commands.ReservationTable;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Etar.WebAdmin.Controllers
@@ -27,6 +28,19 @@ namespace Etar.WebAdmin.Controllers
         public IActionResult Create (ReqAddTableDto request)
         {
             return  Json(_services.TableServices.AddTableService.Execute(request));
+        }
+
+        [HttpGet]
+        public IActionResult Reserve(Guid id)
+        {
+            ViewBag.TableId = id;
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Reserve(ReqReservationTableDto request)
+        {
+            return Json(_services.TableServices.ReservationTableService.Execute(request));
         }
     }
 }

@@ -18,7 +18,7 @@ namespace Etar.Application.Services.Admins.Table.Commands.ReservationTable
 
             if(foundedTable != null)
             {
-                if(foundedTable.ReservedTime ==  null)
+                if(foundedTable.ReservedTime ==  null || foundedTable.ReservedTime <= request.ReservationTime)
                 {
                     foundedTable.ReservedTime = request.ReservationTime;
                     foundedTable.IsReserved = true;

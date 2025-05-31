@@ -19,14 +19,14 @@ namespace Etar.Application.Services.Admins.Table.Queries.GetTableDatails
             if(foundedTable != null)
             {
                 if(foundedTable.ReservedTime != null &&
-                    !(DateTime.Now <= foundedTable.ReservedTime))
+                    (TimeOnly.FromDateTime(DateTime.Now) >= foundedTable.ReservedTime))
                 {
                     foundedTable.ReservedTime = null;
                     foundedTable.IsReserved = false;
                     _context.SaveChanges();
                 }
 
-                DateTime temp = foundedTable.ReservedTime.Value;
+                TimeOnly temp = foundedTable.ReservedTime.Value;
                 return new Result<ResGetTableDetailsDto>()
                 {
                     IsSuccess = true,
@@ -35,7 +35,7 @@ namespace Etar.Application.Services.Admins.Table.Queries.GetTableDatails
                     {
                         Capacity = foundedTable.Capacity,
                         Number = foundedTable.Number,
-                        ReservedTime = temp.ToShortTimeString()
+                        ReservedTime = temp.ToString("HH:mm")
                     }
                 };
             }

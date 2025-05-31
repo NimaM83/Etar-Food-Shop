@@ -195,8 +195,8 @@ namespace Etar.Presistance.Migrations
                     b.Property<int>("Number")
                         .HasColumnType("int");
 
-                    b.Property<DateTime?>("ReservedTime")
-                        .HasColumnType("datetime2");
+                    b.Property<TimeOnly?>("ReservedTime")
+                        .HasColumnType("time");
 
                     b.HasKey("Id");
 

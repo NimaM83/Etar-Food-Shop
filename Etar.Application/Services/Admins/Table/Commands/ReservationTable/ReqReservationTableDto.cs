@@ -3,6 +3,6 @@
     public class ReqReservationTableDto
     {
         public Guid Id { get; set; }
-        public DateTime ReservationTime { get; set; }
+        public TimeOnly ReservationTime { get; set; }
     }
 }
