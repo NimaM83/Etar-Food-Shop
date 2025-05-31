@@ -31,7 +31,7 @@
 
 ### 1. کلون کردن پروژه
 
-bash
+bash  
 git clone https://github.com/phoenim/Etar-Food-Shop.git  
 cd Etar-Food-Shop
 
@@ -39,7 +39,7 @@ cd Etar-Food-Shop
 
 برای بازیابی بسته‌های مورد نیاز پروژه، دستور زیر را در ترمینال داخل ریشه پروژه اجرا کنید:
 
-bash
+bash  
 dotnet restore
 
 #### نحوه ایمپورت (ریستور) بکاپ دیتابیس
@@ -58,7 +58,7 @@ dotnet restore
 
 برای اجرای پروژه می‌توانید از دستور زیر استفاده کنید:
 
-bash
+bash  
 dotnet run  
 
 پس از اجرای پروژه، مرورگر را باز کرده و وارد آدرس زیر شوید:  
