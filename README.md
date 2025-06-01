@@ -32,7 +32,7 @@
 ### 1. کلون کردن پروژه
 
 bash  
-git clone https://github.com/phoenim/Etar-Food-Shop.git  
+git clone https://github.com/NimaM83/Etar-Food-Shop.git  
 cd Etar-Food-Shop
 
 ### 2. ریستور کردن پکیج‌ها
